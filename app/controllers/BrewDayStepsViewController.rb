@@ -123,11 +123,40 @@ class BrewDayStepsViewController < UIViewController
   end
 
   def actionSheet(actionSheet, didDismissWithButtonIndex:buttonIndex)
-    puts ">>>>> Pressed: #{buttonIndex}"
+    bdv = nil
+    case buttonIndex
+    when 0
+      bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddGroupView')
+    when 1
+      bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddStepView')
+    end
+
+    # Add Step
+    if bdv
+      bdv.delegate = self
+      self.presentModalViewController(bdv, animated:true)
+    end
+
   end
 
 
   ############################################################################
   # Delegate interface
+
+  def addGroupDone(brew_group)
+    @steps << { :type => BrewDayGroupCell.name, :name => brew_group.name, :func => nil, :params => { :id => 'RecipeView' } }
+    paths = [NSIndexPath.indexPathForRow(@steps.length - 1, inSection:0)]
+    table.beginUpdates
+    table.insertRowsAtIndexPaths(paths, withRowAnimation:UITableViewRowAnimationAutomatic)
+    table.endUpdates
+  end
+
+  def addStepDone(brew_step)
+    @steps << { :type => BrewDayStepCell.name, :name => brew_step.name, :description => brew_step.description, :func => nil, :params => { :id => 'RecipeView' } }
+    paths = [NSIndexPath.indexPathForRow(@steps.length - 1, inSection:0)]
+    table.beginUpdates
+    table.insertRowsAtIndexPaths(paths, withRowAnimation:UITableViewRowAnimationAutomatic)
+    table.endUpdates
+  end
 
 end

@@ -19,6 +19,10 @@ class BrewDayAddViewController < UIViewController
     super
   end
 
+
+  ############################################################################
+  # Picker View delegation
+
   def numberOfComponentsInPickerView(pickerView)
     1    
   end
@@ -34,6 +38,10 @@ class BrewDayAddViewController < UIViewController
   def pickerView(pickerView, titleForRow:row, forComponent:component)
     BREW_STYLE[row]
   end
+
+
+  ############################################################################
+  # Actions
 
   def cancelTouched(sender)
     self.dismissModalViewControllerAnimated(true)

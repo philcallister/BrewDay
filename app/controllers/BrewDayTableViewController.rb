@@ -97,10 +97,6 @@ class BrewDayTableViewController < UITableViewController
   ############################################################################
   # Actions
 
-  def addPressed(sender)
-    puts ">>>>> MenuTableViewController#addPressed"
-  end
-
 
   ############################################################################
   # Delegate interface
