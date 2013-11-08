@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="78a-yj-Zzn">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="Cxu-sF-KKw">
+            <objects>
+                <viewController storyboardIdentifier="SplashView" id="78a-yj-Zzn" customClass="SplashViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tqQ-v2-mKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fct-tv-zse"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l7I-cP-fMT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oHH-Rc-XMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3949" y="-4761"/>
+        </scene>
+        <!--Brew Day Table View Controller - Brew Days-->
+        <scene sceneID="j1E-dv-4jN">
+            <objects>
+                <tableViewController storyboardIdentifier="BrewDayTableView" id="cde-t1-Tj2" customClass="BrewDayTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="CpU-lK-oyp">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayCell" rowHeight="50" id="P2x-7K-aZk" customClass="BrewDayCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P2x-7K-aZk" id="Jbt-SN-1Gx">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-XD-sAy">
+                                            <rect key="frame" x="58" y="17" width="229" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYN-cT-Xwk">
+                                            <rect key="frame" x="58" y="0.0" width="229" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXc-94-1qq">
+                                            <rect key="frame" x="10" y="5" width="38" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-s0-g75">
+                                                    <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="0Xf-tX-GH7"/>
+                                                        <constraint firstAttribute="width" constant="38" id="pYu-pX-obc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.2694476146" green="0.36244939929999997" blue="0.49623325889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="4jx-s0-g75" firstAttribute="top" secondItem="eXc-94-1qq" secondAttribute="top" id="0mS-J7-Iq3"/>
+                                                <constraint firstItem="4jx-s0-g75" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="leading" id="G1t-Wi-S9c"/>
+                                                <constraint firstAttribute="trailing" secondItem="4jx-s0-g75" secondAttribute="trailing" id="MOm-m4-sdZ"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eXc-94-1qq" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" constant="5" id="5Dx-UO-931"/>
+                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="EjP-xy-aEB"/>
+                                        <constraint firstAttribute="bottom" secondItem="5i1-XD-sAy" secondAttribute="bottom" id="FkW-sI-PA8"/>
+                                        <constraint firstItem="pYN-cT-Xwk" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" id="NoB-ky-DZ2"/>
+                                        <constraint firstItem="eXc-94-1qq" firstAttribute="leading" secondItem="Jbt-SN-1Gx" secondAttribute="leading" constant="10" id="RPf-fy-iJG"/>
+                                        <constraint firstItem="5i1-XD-sAy" firstAttribute="width" secondItem="pYN-cT-Xwk" secondAttribute="width" id="bDt-1o-xLc"/>
+                                        <constraint firstItem="5i1-XD-sAy" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" constant="17" id="dIv-dQ-QcQ"/>
+                                        <constraint firstItem="pYN-cT-Xwk" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="trailing" constant="10" id="lkO-Hn-SsG"/>
+                                        <constraint firstItem="pYN-cT-Xwk" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="trailing" constant="10" id="n24-KS-IWk"/>
+                                        <constraint firstAttribute="bottom" secondItem="pYN-cT-Xwk" secondAttribute="bottom" constant="26" id="os4-od-nZo"/>
+                                        <constraint firstAttribute="trailing" secondItem="pYN-cT-Xwk" secondAttribute="trailing" id="pfL-m6-VU3"/>
+                                        <constraint firstAttribute="bottom" secondItem="eXc-94-1qq" secondAttribute="bottom" constant="6" id="rCb-sI-WG2"/>
+                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="t4k-kn-xes"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="description" destination="5i1-XD-sAy" id="AuU-xD-VNZ"/>
+                                    <outlet property="name" destination="pYN-cT-Xwk" id="iCq-Ts-KAu"/>
+                                    <segue destination="uuY-JX-vTb" kind="push" id="gxn-cG-0r9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cde-t1-Tj2" id="DzD-yz-3zz"/>
+                            <outlet property="delegate" destination="cde-t1-Tj2" id="Sht-VO-58w"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Brew Days" id="Qth-eh-dXf">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="QfJ-CU-nK9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addPressed:" destination="cde-t1-Tj2" id="hl7-ve-MLI"/>
+                                <segue destination="QHx-f5-YOc" kind="modal" identifier="BrewDayAddSegue" modalTransitionStyle="coverVertical" id="2k1-U1-LLd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="CpU-lK-oyp" id="CbD-Ne-6o2"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NET-Bc-Nxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3489" y="-4066"/>
+        </scene>
+        <!--Brew Day Add View Controller-->
+        <scene sceneID="7Du-zT-JWp">
+            <objects>
+                <viewController storyboardIdentifier="BrewDayAddView" id="QHx-f5-YOc" customClass="BrewDayAddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3VZ-Fk-hPI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nta-hc-4Sg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RTL-77-2de">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zz3-5z-TKr">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.45749497389999999" green="0.61540265890000001" blue="0.84255420920000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Add Brew Day" id="hb4-Ay-diW">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="5CV-If-0w4">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="cancelTouched:" destination="QHx-f5-YOc" id="Xnf-b3-LDj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="JOM-9a-4wB">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="doneTouched:" destination="QHx-f5-YOc" id="7hl-im-I3N"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brew Day Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1PH-jf-0Uh">
+                                <rect key="frame" x="20" y="75" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brew Day Description" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-IP-oW6">
+                                <rect key="frame" x="20" y="113" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWY-ZH-vk6">
+                                <rect key="frame" x="0.0" y="180" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QHx-f5-YOc" id="t71-2f-Dm8"/>
+                                    <outlet property="delegate" destination="QHx-f5-YOc" id="yei-Je-Hpi"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Style" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToY-wh-xbS">
+                                <rect key="frame" x="139" y="151" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45749497393361843" green="0.61540265885196455" blue="0.84255420918367352" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="description" destination="jWJ-IP-oW6" id="AOS-09-O5U"/>
+                        <outlet property="name" destination="1PH-jf-0Uh" id="s1e-8x-1QJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCk-8b-Fx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3489" y="-3354"/>
+        </scene>
+        <!--Initial Navigation Controller-->
+        <scene sceneID="ShT-RB-TLC">
+            <objects>
+                <navigationController storyboardIdentifier="InitialNavigation" definesPresentationContext="YES" id="RdB-i8-hbO" customClass="InitialNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Nbj-Pv-gt1">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.35017427159658365" green="0.63500478316326525" blue="0.047786862429642508" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cde-t1-Tj2" kind="relationship" relationship="rootViewController" id="KBs-nS-Fhg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8g-5e-ZmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3949" y="-4066"/>
+        </scene>
+        <!--Brew Day Steps View Controller - Steps-->
+        <scene sceneID="U88-if-bkp">
+            <objects>
+                <viewController storyboardIdentifier="BrewDayStepsView" id="uuY-JX-vTb" customClass="BrewDayStepsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nx2-b8-AbG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jyv-vc-MVE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9u6-Cb-O63">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHi-uO-yZA">
+                                <rect key="frame" x="20" y="14" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tD-kW-c5m">
+                                        <rect key="frame" x="1" y="1" width="38" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2694476146" green="0.36244939929999997" blue="0.49623325889999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-do-wnb">
+                                <rect key="frame" x="74" y="14" width="226" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-wx-lmC">
+                                <rect key="frame" x="74" y="33" width="226" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.033708635776874878" green="0.29695587480925811" blue="0.50994499362244894" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-rg-Td3">
+                                <rect key="frame" x="0.0" y="66" width="320" height="445"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.9417594298837324" green="0.93720986742052592" blue="0.94630899234693877" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayStepCell" id="UXL-0Y-N2l" customClass="BrewDayStepCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UXL-0Y-N2l" id="Aka-nF-EsW">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-sU-wmg">
+                                                    <rect key="frame" x="20" y="20" width="224" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhn-1z-BlC">
+                                                    <rect key="frame" x="252" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju0-Yk-mHk">
+                                                    <rect key="frame" x="20" y="2" width="224" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="description" destination="uNS-sU-wmg" id="iYN-Mm-Jjm"/>
+                                            <outlet property="name" destination="ju0-Yk-mHk" id="Aoy-H4-f3Z"/>
+                                            <outlet property="timer" destination="Dhn-1z-BlC" id="bwG-it-fGO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayGroupCell" rowHeight="30" id="M9t-Ft-CR5" customClass="BrewDayGroupCell">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M9t-Ft-CR5" id="dJu-sD-B71">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-c2-Cjf">
+                                                    <rect key="frame" x="20" y="4" width="253" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="name" destination="OYH-c2-Cjf" id="gnQ-UE-gFv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uuY-JX-vTb" id="XFx-Hs-M4l"/>
+                                    <outlet property="delegate" destination="uuY-JX-vTb" id="grJ-1O-hOL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45802523350000002" green="0.61611594130000003" blue="0.84353077170000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Steps" id="doI-LB-rDZ"/>
+                    <connections>
+                        <outlet property="table" destination="6hJ-rg-Td3" id="lxN-c2-GUL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAe-vv-KrT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3015" y="-4066"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

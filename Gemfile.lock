@@ -1,0 +1,32 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (3.2.15)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    bubble-wrap (1.4.0)
+    colored (1.2)
+    i18n (0.6.5)
+    ib (0.3.1)
+      thor (>= 0.15.4)
+      xcodeproj (>= 0.4.1)
+    motion-bundler (0.2.1)
+      thor
+    motion-testflight (1.5)
+    multi_json (1.8.2)
+    rake (10.1.0)
+    thor (0.18.1)
+    xcodeproj (0.8.1)
+      activesupport (~> 3.2.13)
+      colored (~> 1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bubble-wrap
+  ib
+  motion-bundler
+  motion-testflight
+  rake
+  xcodeproj (~> 0.8.1)
