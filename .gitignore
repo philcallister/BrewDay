@@ -16,3 +16,5 @@ nbproject
 .idea
 ib.xcodeproj/*
 .motion-bundler.rb
+vendor/Pods/*
+vendor/Podfile.lock

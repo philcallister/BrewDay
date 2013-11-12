@@ -25,6 +25,11 @@ Motion::Project::App.setup do |app|
   #app.testflight.api_token = '9056f33ee65d4b8d11ee48af3f46bd5a_MTE1NDYxMzIwMTMtMDctMDggMDk6NDk6MzcuNTM1MDQ0'
   #app.testflight.team_token = '6534a7e693c9b00b660e39028c0c070b_MjQ1NzI2MjAxMy0wNy0wOCAwOTo1NDoxNi44Njg1NDU'
 
+  app.pods do
+    #pod 'ECSlidingViewController', podspec: '~/.cocoapods/repos/master/ECSlidingViewController/1.3.2/ECSlidingViewController.podspec'
+    pod 'ECSlidingViewController', podspec: 'https://raw.github.com/edgecase/ECSlidingViewController/ed40854b13187d5d34d6ab862c8248efba1c6c0f/ECSlidingViewController.podspec'
+  end
+
   app.development do
     # This entitlement is required during development but must not be used for release.
     app.entitlements['get-task-allow'] = true

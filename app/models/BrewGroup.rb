@@ -1,5 +1,5 @@
 class BrewGroup
 
-  attr_accessor :name, :brew_steps
+  attr_accessor :name
 
 end

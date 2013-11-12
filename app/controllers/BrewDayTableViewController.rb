@@ -12,7 +12,7 @@ class BrewDayTableViewController < UITableViewController
              { :name => "Paranoid Coffee Milk Stout", :description => "Wat? This won 3rd place at Beer Dabler 2013.", :func => nil, :params => { :id => 'RecipeView' } },
              { :name => "Phil's Furious", :description => "Surly Furious in your own keg.", :func => nil, :params => { :id => 'RecipeView' } }]
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem
+    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItem, self.editButtonItem]
   end
 
   def viewWillAppear(animated)
@@ -49,6 +49,7 @@ class BrewDayTableViewController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier(BrewDayCell.name)
     cell.name.text = item[:name]
     cell.description.text = item[:description]
+    cell.description.sizeToFit
 
     bgColorView = UIView.alloc.init
     bgColorView.backgroundColor = UIColor.colorWithRed(220.0/255.0, green:220.0/255.0, blue:220.0/255.0, alpha:1.0)
@@ -96,6 +97,10 @@ class BrewDayTableViewController < UITableViewController
 
   ############################################################################
   # Actions
+
+  def menuPressed
+    self.slidingViewController.anchorTopViewTo(ECRight)
+  end
 
 
   ############################################################################

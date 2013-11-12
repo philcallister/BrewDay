@@ -17,12 +17,7 @@ class BrewDayStepsViewController < UIViewController
               { :type => BrewDayGroupCell.name, :name => "Mash", :func => nil, :params => { :id => 'BrewDayAddGroupView' } },
               { :type => BrewDayStepCell.name, :name => "PH", :description => "Test PH...want on low side (5.2)", :timer => nil, :func => nil, :params => { :id => 'BrewDayAddStepView' } },
               { :type => BrewDayStepCell.name, :name => "Sacch Rest", :description => "Sacch Rest @ 152F for 1 hour", :timer => "1:00", :func => nil, :params => { :id => 'BrewDayAddStepView' } }]
-
-    r1 = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAdd,
-                                                           target: self,
-                                                           action: :addPressed)
-    r2 = self.editButtonItem
-    self.navigationItem.rightBarButtonItems = [r1, r2]
+    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItem, self.editButtonItem]
   end
 
   def viewWillAppear(animated)

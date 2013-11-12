@@ -15,7 +15,7 @@ class SplashViewController < UIViewController
     
     sleep 1
 
-    inc = self.storyboard.instantiateViewControllerWithIdentifier('InitialNavigation')
+    inc = self.storyboard.instantiateViewControllerWithIdentifier('InitialSlidingView')
     self.presentViewController(inc, animated:true, completion:nil)
 
   end

@@ -7,6 +7,8 @@ class BrewDayAddStepViewController < UIViewController
   # Outlets
   outlet :name, UITextField
   outlet :description, UITextField
+  outlet :step_type, UISegmentedControl
+  outlet :timer_picker, UIPickerView
 
   def viewDidLoad
     super
@@ -14,6 +16,28 @@ class BrewDayAddStepViewController < UIViewController
 
   def viewWillAppear(animated)
     super
+
+    timer_picker.hidden = (step_type.selectedSegmentIndex == 0)
+  end
+
+
+  ############################################################################
+  # Picker View delegation
+
+  def numberOfComponentsInPickerView(pickerView)
+    2    
+  end
+
+  def pickerView(pickerView, titleForRow:row, forComponent:component)
+    row.to_s
+  end
+
+  def pickerView(pickerView, numberOfRowsInComponent:component)
+    (component == 0) ? 25 : 60
+  end
+
+  def pickerView(pickerView, didSelectRow:row, inComponent:component)
+    puts ">>>>> Selected: #{component} | #{row}"
   end
 
 
@@ -30,6 +54,10 @@ class BrewDayAddStepViewController < UIViewController
     brew_step.description = description.text
     delegate.addStepDone(brew_step)    
     self.dismissModalViewControllerAnimated(true)
+  end
+
+  def stepTypeChanged(sender)
+    timer_picker.hidden = (sender.selectedSegmentIndex == 0)
   end
 
 end
