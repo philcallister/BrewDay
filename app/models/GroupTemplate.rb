@@ -1,0 +1,2 @@
+class GroupTemplate < ItemTemplate
+end

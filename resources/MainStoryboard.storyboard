@@ -55,8 +55,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-pK-r1b">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.8445925151" green="0.84051235800000001" blue="0.84867267219999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="50" id="MXx-gH-1gD" customClass="MenuCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="50"/>
@@ -66,7 +66,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogA-P4-is2">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="43"/>
+                                                    <rect key="frame" x="20" y="3" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,7 +75,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="menu_label" destination="ogA-P4-is2" id="3M2-ZC-Jo6"/>
+                                            <outlet property="menu" destination="ogA-P4-is2" id="sGJ-xE-Tfl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -230,7 +230,7 @@
                         <color key="backgroundColor" red="0.45749497389999999" green="0.61540265890000001" blue="0.84255420920000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="description" destination="Xps-wg-Qng" id="PGu-V4-cez"/>
+                        <outlet property="info" destination="Xps-wg-Qng" id="qLh-5p-Uak"/>
                         <outlet property="name" destination="zjF-5F-y4F" id="esp-xa-aD2"/>
                         <outlet property="step_type" destination="9CA-Ep-vZE" id="9zw-U8-xmb"/>
                         <outlet property="timer_picker" destination="Ow1-TD-lJk" id="hGQ-xf-TTv"/>
@@ -244,21 +244,21 @@
         <scene sceneID="j1E-dv-4jN">
             <objects>
                 <tableViewController storyboardIdentifier="BrewDayTableView" id="cde-t1-Tj2" customClass="BrewDayTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="CpU-lK-oyp">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="CpU-lK-oyp">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.8445925151" green="0.84051235800000001" blue="0.84867267219999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayCell" rowHeight="50" id="P2x-7K-aZk" customClass="BrewDayCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayCell" rowHeight="66" id="P2x-7K-aZk" customClass="BrewDayCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P2x-7K-aZk" id="Jbt-SN-1Gx">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-XD-sAy">
-                                            <rect key="frame" x="58" y="17" width="229" height="32"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-XD-sAy">
+                                            <rect key="frame" x="58" y="17" width="229" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -266,14 +266,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYN-cT-Xwk">
-                                            <rect key="frame" x="58" y="0.0" width="229" height="23"/>
+                                            <rect key="frame" x="58" y="0.0" width="229" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXc-94-1qq">
-                                            <rect key="frame" x="10" y="5" width="38" height="38"/>
+                                            <rect key="frame" x="10" y="13" width="38" height="38"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-s0-g75">
@@ -298,7 +298,7 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="eXc-94-1qq" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" constant="5" id="5Dx-UO-931"/>
+                                        <constraint firstItem="eXc-94-1qq" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" constant="13" id="5Dx-UO-931"/>
                                         <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="EjP-xy-aEB"/>
                                         <constraint firstAttribute="bottom" secondItem="5i1-XD-sAy" secondAttribute="bottom" id="FkW-sI-PA8"/>
                                         <constraint firstItem="pYN-cT-Xwk" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" id="NoB-ky-DZ2"/>
@@ -309,14 +309,16 @@
                                         <constraint firstItem="pYN-cT-Xwk" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="trailing" constant="10" id="n24-KS-IWk"/>
                                         <constraint firstAttribute="bottom" secondItem="pYN-cT-Xwk" secondAttribute="bottom" constant="26" id="os4-od-nZo"/>
                                         <constraint firstAttribute="trailing" secondItem="pYN-cT-Xwk" secondAttribute="trailing" id="pfL-m6-VU3"/>
-                                        <constraint firstAttribute="bottom" secondItem="eXc-94-1qq" secondAttribute="bottom" constant="6" id="rCb-sI-WG2"/>
+                                        <constraint firstAttribute="bottom" secondItem="eXc-94-1qq" secondAttribute="bottom" constant="14" id="rCb-sI-WG2"/>
                                         <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="t4k-kn-xes"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="description" destination="5i1-XD-sAy" id="AuU-xD-VNZ"/>
+                                    <outlet property="brew_style" destination="4jx-s0-g75" id="oOm-mC-Okx"/>
+                                    <outlet property="brew_style_view" destination="eXc-94-1qq" id="bmz-V1-Km2"/>
+                                    <outlet property="info" destination="5i1-XD-sAy" id="1ng-pj-ApU"/>
                                     <outlet property="name" destination="pYN-cT-Xwk" id="iCq-Ts-KAu"/>
-                                    <segue destination="uuY-JX-vTb" kind="push" id="gxn-cG-0r9"/>
+                                    <segue destination="uuY-JX-vTb" kind="push" identifier="BrewDayStepsSegue" id="gxn-cG-0r9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -422,8 +424,9 @@
                         <color key="backgroundColor" red="0.45749497393361843" green="0.61540265885196455" blue="0.84255420918367352" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="description" destination="jWJ-IP-oW6" id="AOS-09-O5U"/>
+                        <outlet property="info" destination="jWJ-IP-oW6" id="8LE-BH-wcE"/>
                         <outlet property="name" destination="1PH-jf-0Uh" id="s1e-8x-1QJ"/>
+                        <outlet property="style_picker" destination="jWY-ZH-vk6" id="S81-Yn-a76"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCk-8b-Fx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -463,7 +466,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHi-uO-yZA">
-                                <rect key="frame" x="20" y="14" width="40" height="40"/>
+                                <rect key="frame" x="10" y="14" width="38" height="38"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tD-kW-c5m">
@@ -478,16 +481,16 @@
                                 <color key="backgroundColor" red="0.2694476146" green="0.36244939929999997" blue="0.49623325889999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-do-wnb">
-                                <rect key="frame" x="74" y="14" width="226" height="21"/>
+                                <rect key="frame" x="59" y="9" width="243" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-wx-lmC">
-                                <rect key="frame" x="74" y="33" width="226" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-wx-lmC">
+                                <rect key="frame" x="59" y="26" width="243" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.033708635776874878" green="0.29695587480925811" blue="0.50994499362244894" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -504,7 +507,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-sU-wmg">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-sU-wmg">
                                                     <rect key="frame" x="20" y="20" width="224" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -528,7 +531,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="description" destination="uNS-sU-wmg" id="iYN-Mm-Jjm"/>
+                                            <outlet property="info" destination="uNS-sU-wmg" id="1f1-Em-mTD"/>
                                             <outlet property="name" destination="ju0-Yk-mHk" id="Aoy-H4-f3Z"/>
                                             <outlet property="timer" destination="Dhn-1z-BlC" id="bwG-it-fGO"/>
                                         </connections>
@@ -571,6 +574,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="brew_style" destination="2tD-kW-c5m" id="bHO-WF-eVP"/>
+                        <outlet property="info" destination="bXH-wx-lmC" id="sZg-6i-WRv"/>
+                        <outlet property="name" destination="FOz-do-wnb" id="MuG-OY-BhC"/>
                         <outlet property="table" destination="6hJ-rg-Td3" id="lxN-c2-GUL"/>
                     </connections>
                 </viewController>

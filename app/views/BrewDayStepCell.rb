@@ -4,7 +4,7 @@ class BrewDayStepCell < UITableViewCell
 
   # Outlets
   outlet :name, UILabel
-  outlet :description, UILabel
+  outlet :info, UILabel
   outlet :timer, UILabel
 
   def willTransitionToState(state)

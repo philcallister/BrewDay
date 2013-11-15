@@ -2,25 +2,31 @@ class BrewDayStepsViewController < UIViewController
 
   extend IB
 
+  attr_accessor :brew
+
   # Outlets
   outlet :name, UILabel
-  outlet :description, UILabel
+  outlet :info, UILabel
+  outlet :brew_style, UILabel
   outlet :table, UITableView
 
   def viewDidLoad
     super
 
     @steps = [{ :type => BrewDayGroupCell.name, :name => "Start", :func => nil, :params => { :id => 'BrewDayAddGroupView' } },
-              { :type => BrewDayStepCell.name, :name => "HLT", :description => "Heat 8 gallons HLT to 154F but DO NOT GO OVER!!", :timer => "0:30", :func => nil, :params => { :id => 'BrewDayAddStepView' } },
-              { :type => BrewDayStepCell.name, :name => "Transfer", :description => "Transfer HLT to Mash Tun", :timer => nil, :func => nil, :params => { :id => 'BrewDayAddStepView' } },
-              { :type => BrewDayStepCell.name, :name => "Mash-in", :description => "Mash-in all 60-minute grain", :timer => "0:15", :func => nil, :params => { :id => 'BrewDayAddStepView' } },
+              { :type => BrewDayStepCell.name, :name => "HLT", :info => "Heat 8 gallons HLT to 154F but DO NOT GO OVER!!", :timer => "0:30", :func => nil, :params => { :id => 'BrewDayAddStepView' } },
+              { :type => BrewDayStepCell.name, :name => "Transfer", :info => "Transfer HLT to Mash Tun", :timer => nil, :func => nil, :params => { :id => 'BrewDayAddStepView' } },
+              { :type => BrewDayStepCell.name, :name => "Mash-in", :info => "Mash-in all 60-minute grain", :timer => "0:15", :func => nil, :params => { :id => 'BrewDayAddStepView' } },
               { :type => BrewDayGroupCell.name, :name => "Mash", :func => nil, :params => { :id => 'BrewDayAddGroupView' } },
-              { :type => BrewDayStepCell.name, :name => "PH", :description => "Test PH...want on low side (5.2)", :timer => nil, :func => nil, :params => { :id => 'BrewDayAddStepView' } },
-              { :type => BrewDayStepCell.name, :name => "Sacch Rest", :description => "Sacch Rest @ 152F for 1 hour", :timer => "1:00", :func => nil, :params => { :id => 'BrewDayAddStepView' } }]
+              { :type => BrewDayStepCell.name, :name => "PH", :info => "Test PH...want on low side (5.2)", :timer => nil, :func => nil, :params => { :id => 'BrewDayAddStepView' } },
+              { :type => BrewDayStepCell.name, :name => "Sacch Rest", :info => "Sacch Rest @ 152F for 1 hour", :timer => "1:00", :func => nil, :params => { :id => 'BrewDayAddStepView' } }]
     self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItem, self.editButtonItem]
   end
 
   def viewWillAppear(animated)
+    name.text = brew.name
+    info.text = brew.info
+    brew_style.text = brew.brew_style.to_s
     super
   end
 
@@ -52,7 +58,7 @@ class BrewDayStepsViewController < UIViewController
     when BrewDayStepCell.name
       cell = tableView.dequeueReusableCellWithIdentifier(item[:type])
       cell.name.text = item[:name]
-      cell.description.text = item[:description]
+      cell.info.text = item[:info]
       cell.timer.text = item[:timer]
     when BrewDayGroupCell.name
       cell = tableView.dequeueReusableCellWithIdentifier(item[:type])
@@ -147,7 +153,7 @@ class BrewDayStepsViewController < UIViewController
   end
 
   def addStepDone(brew_step)
-    @steps << { :type => BrewDayStepCell.name, :name => brew_step.name, :description => brew_step.description, :func => nil, :params => { :id => 'RecipeView' } }
+    @steps << { :type => BrewDayStepCell.name, :name => brew_step.name, :info => brew_step.description, :func => nil, :params => { :id => 'RecipeView' } }
     paths = [NSIndexPath.indexPathForRow(@steps.length - 1, inSection:0)]
     table.beginUpdates
     table.insertRowsAtIndexPaths(paths, withRowAnimation:UITableViewRowAnimationAutomatic)

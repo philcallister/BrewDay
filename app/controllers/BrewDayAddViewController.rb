@@ -6,7 +6,7 @@ class BrewDayAddViewController < UIViewController
 
   # Outlets
   outlet :name, UITextField
-  outlet :description, UITextField
+  outlet :info, UITextField
   outlet :style_picker, UIPickerView
 
   BREW_STYLE = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN']
@@ -48,11 +48,12 @@ class BrewDayAddViewController < UIViewController
   end
 
   def doneTouched(sender)
-    brew_day = BrewDay.new
-    brew_day.name = name.text
-    brew_day.description = description.text
-    brew_day.BREW_STYLE = BREW_TYPE[type_picker.selectedRowInComponent(0)]
-    delegate.addDone(brew_day)    
+    brew = BrewTemplate.create!(name: name.text, 
+                                info: info.text,
+                                brew_style: style_picker.selectedRowInComponent(0),
+                                position: self.delegate.brewPosition)
+    brew.save!
+    self.delegate.addDone(brew)    
     self.dismissModalViewControllerAnimated(true)
   end
 

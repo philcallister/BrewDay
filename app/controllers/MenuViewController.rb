@@ -7,10 +7,10 @@ class MenuViewController < UIViewController
     super
     @first_appearance = true
 
-    @menu = [{ :label => 'Create', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
-              { :label => 'Brew', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
-              { :label => 'Log', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
-              { :label => 'Settings', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false }]
+    @menu ||= [{ :menu => 'Create', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
+               { :menu => 'Brew', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
+               { :menu => 'Log', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
+               { :menu => 'Settings', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false }]
 
     #self.slidingViewController.setAnchorRightRevealAmount(280.0)
     self.slidingViewController.underLeftWidthLayout = ECFullWidth
@@ -25,9 +25,9 @@ class MenuViewController < UIViewController
   end
   
   def tableView(tableView, cellForRowAtIndexPath:path)
-    item = @menu[path.row][:label]
+    item = @menu[path.row][:menu]
     cell = tableView.dequeueReusableCellWithIdentifier(MenuCell.name)
-    cell.menu_label.text = item
+    cell.populate(item)
     if @first_appearance
       @first_appearance = false
       tableView.selectRowAtIndexPath(path, animated:false, scrollPosition:UITableViewScrollPositionTop)
@@ -46,6 +46,11 @@ class MenuViewController < UIViewController
       end
     end
     tableView.deselectRowAtIndexPath(path, animated:true) if item[:deselect]
+  end
+
+  # We do this to avoid having separators after the last cell
+  def tableView(tableView, heightForFooterInSection:section)
+    return 0.01
   end
 
   def display_view(params)

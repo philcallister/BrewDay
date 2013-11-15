@@ -4,6 +4,34 @@ class BrewDayCell < UITableViewCell
 
   # Outlets
   outlet :name, UILabel
-  outlet :description, UILabel
+  outlet :info, UILabel
+  outlet :brew_style, UILabel
+  outlet :brew_style_view, UIView
+
+  def populate(name, info, brew_style)
+    self.name.text = name
+    self.info.text = info
+    self.brew_style.text = brew_style.to_s
+
+    bgColorView = UIView.alloc.init
+    bgColorView.backgroundColor = UIColor.colorWithRed(182.0/255.0, green:182.0/255.0, blue:182.0/255.0, alpha:1.0)
+    self.selectedBackgroundView = bgColorView
+    color = UIColor.whiteColor
+    self.name.highlightedTextColor = color
+    self.info.highlightedTextColor = color
+    self.brew_style.highlightedTextColor = UIColor.whiteColor
+  end
+
+  def setSelected(selected, animated:animated)
+    @background ||= self.brew_style_view.backgroundColor
+    super
+    self.brew_style_view.backgroundColor = @background
+  end
+
+  def setHighlighted(highlighted, animated:animated)
+    @background ||= self.brew_style_view.backgroundColor
+    super
+    self.brew_style_view.backgroundColor = @background
+  end
 
 end

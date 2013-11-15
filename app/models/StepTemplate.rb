@@ -1,0 +1,2 @@
+class StepTemplate < ItemTemplate
+end

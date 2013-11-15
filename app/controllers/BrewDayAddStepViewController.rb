@@ -6,7 +6,7 @@ class BrewDayAddStepViewController < UIViewController
 
   # Outlets
   outlet :name, UITextField
-  outlet :description, UITextField
+  outlet :info, UITextField
   outlet :step_type, UISegmentedControl
   outlet :timer_picker, UIPickerView
 
@@ -51,7 +51,7 @@ class BrewDayAddStepViewController < UIViewController
   def doneTouched(sender)
     brew_step = BrewStep.new
     brew_step.name = name.text
-    brew_step.description = description.text
+    brew_step.info = info.text
     delegate.addStepDone(brew_step)    
     self.dismissModalViewControllerAnimated(true)
   end

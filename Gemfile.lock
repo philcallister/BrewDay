@@ -33,6 +33,8 @@ GEM
     motion-cocoapods (1.3.7)
       cocoapods (>= 0.17.0)
     motion-testflight (1.5)
+    motion_data_wrapper (0.0.7)
+      bubble-wrap
     multi_json (1.8.2)
     nap (0.5.1)
     open4 (1.3.0)
@@ -52,5 +54,6 @@ DEPENDENCIES
   motion-bundler
   motion-cocoapods
   motion-testflight
+  motion_data_wrapper
   rake
   xcodeproj (~> 0.8.1)

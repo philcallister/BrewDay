@@ -1,4 +1,7 @@
 class AppDelegate
+
+  include MotionDataWrapper::Delegate
+  
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     #TestFlight.takeOff("acde9e93-d73e-44b5-86e7-18c2070ddc29")
     application.setStatusBarStyle(UIStatusBarStyleLightContent)
