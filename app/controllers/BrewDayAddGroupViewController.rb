@@ -24,10 +24,15 @@ class BrewDayAddGroupViewController < UIViewController
   end
 
   def doneTouched(sender)
-    brew_group = BrewGroup.new
-    brew_group.name = name.text
-    delegate.addGroupDone(brew_group)    
+    brew_group = GroupTemplate.new(name: self.name.text,
+                                   position: self.delegate.stepPosition)
+    ctx = App.delegate.managedObjectContext
+    ctx.insertObject(brew_group)
+    brew_group.brew = self.delegate.brew
+    brew_group.save!
+    self.delegate.addGroupDone(brew_group)
     self.dismissModalViewControllerAnimated(true)
   end
+
 
 end

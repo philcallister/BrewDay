@@ -27,7 +27,7 @@ Motion::Project::App.setup do |app|
 
   app.pods do
     #pod 'ECSlidingViewController', podspec: '~/.cocoapods/repos/master/ECSlidingViewController/1.3.2/ECSlidingViewController.podspec'
-    pod 'ECSlidingViewController', podspec: 'https://raw.github.com/edgecase/ECSlidingViewController/ed40854b13187d5d34d6ab862c8248efba1c6c0f/ECSlidingViewController.podspec'
+    pod 'ECSlidingViewController', podspec: 'https://raw.github.com/CocoaPods/Specs/master/ECSlidingViewController/1.3.2/ECSlidingViewController.podspec'
   end
 
   app.development do

@@ -49,10 +49,16 @@ class BrewDayAddStepViewController < UIViewController
   end
 
   def doneTouched(sender)
-    brew_step = BrewStep.new
-    brew_step.name = name.text
-    brew_step.info = info.text
-    delegate.addStepDone(brew_step)    
+    brew_step = StepTemplate.new(name: self.name.text, 
+                                 info: self.info.text,
+                                 hours: self.timer_picker.selectedRowInComponent(0),
+                                 minutes: self.timer_picker.selectedRowInComponent(1),
+                                 position: self.delegate.stepPosition)
+    ctx = App.delegate.managedObjectContext
+    ctx.insertObject(brew_step)
+    brew_step.brew = self.delegate.brew
+    brew_step.save!
+    self.delegate.addStepDone(brew_step)
     self.dismissModalViewControllerAnimated(true)
   end
 

@@ -3,11 +3,13 @@ class BrewDayAddViewController < UIViewController
   extend IB
 
   attr_accessor :delegate
+  attr_accessor :brew_edit
 
   # Outlets
   outlet :name, UITextField
   outlet :info, UITextField
   outlet :style_picker, UIPickerView
+  outlet :nav_item, UINavigationItem
 
   BREW_STYLE = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN']
 
@@ -17,6 +19,14 @@ class BrewDayAddViewController < UIViewController
 
   def viewWillAppear(animated)
     super
+    if self.brew_edit
+      self.nav_item.title = 'Edit Brew Day'
+      self.name.text = brew_edit.name
+      self.info.text = brew_edit.info
+      self.style_picker.selectRow(brew_edit.brew_style, inComponent: 0, animated: true)
+    else
+      self.nav_item.title = 'Add Brew Day'
+    end
   end
 
 
@@ -32,7 +42,6 @@ class BrewDayAddViewController < UIViewController
   end
 
   def pickerView(pickerView, didSelectRow:row, inComponent:component)
-    puts ">>>>> Selected Style: #{BREW_STYLE[row]}"
   end
 
   def pickerView(pickerView, titleForRow:row, forComponent:component)
@@ -48,12 +57,21 @@ class BrewDayAddViewController < UIViewController
   end
 
   def doneTouched(sender)
-    brew = BrewTemplate.create!(name: name.text, 
-                                info: info.text,
-                                brew_style: style_picker.selectedRowInComponent(0),
-                                position: self.delegate.brewPosition)
-    brew.save!
-    self.delegate.addDone(brew)    
+
+    if self.brew_edit
+      self.brew_edit.name = self.name.text
+      self.brew_edit.info = self.info.text
+      self.brew_edit.brew_style = self.style_picker.selectedRowInComponent(0)
+      self.brew_edit.save!
+      self.delegate.editBrewDone(self.brew_edit)
+    else
+      brew = BrewTemplate.create!(name: self.name.text, 
+                                  info: self.info.text,
+                                  brew_style: self.style_picker.selectedRowInComponent(0),
+                                  position: self.delegate.brewPosition)
+      brew.save!
+      self.delegate.addBrewDone(brew)
+    end
     self.dismissModalViewControllerAnimated(true)
   end
 

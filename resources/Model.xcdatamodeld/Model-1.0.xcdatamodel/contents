@@ -4,20 +4,19 @@
         <attribute name="brew_style" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="info" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="position" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ItemTemplate" inverseName="brew" inverseEntity="ItemTemplate" syncable="YES"/>
     </entity>
-    <entity name="GroupTemplate" parentEntity="ItemTemplate" syncable="YES">
-        <attribute name="name" attributeType="String" syncable="YES"/>
-    </entity>
+    <entity name="GroupTemplate" parentEntity="ItemTemplate" syncable="YES"/>
     <entity name="ItemTemplate" isAbstract="YES" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <relationship name="brew" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrewTemplate" inverseName="items" inverseEntity="BrewTemplate" syncable="YES"/>
     </entity>
     <entity name="StepTemplate" parentEntity="ItemTemplate" syncable="YES">
         <attribute name="hours" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="info" attributeType="String" syncable="YES"/>
         <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="BrewTemplate" positionX="0" positionY="0" width="0" height="0"/>

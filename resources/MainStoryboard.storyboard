@@ -377,7 +377,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Add Brew Day" id="hb4-Ay-diW">
+                                    <navigationItem id="hb4-Ay-diW">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="5CV-If-0w4">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -426,6 +426,7 @@
                     <connections>
                         <outlet property="info" destination="jWJ-IP-oW6" id="8LE-BH-wcE"/>
                         <outlet property="name" destination="1PH-jf-0Uh" id="s1e-8x-1QJ"/>
+                        <outlet property="nav_item" destination="hb4-Ay-diW" id="efl-FQ-DvI"/>
                         <outlet property="style_picker" destination="jWY-ZH-vk6" id="S81-Yn-a76"/>
                     </connections>
                 </viewController>
@@ -481,14 +482,14 @@
                                 <color key="backgroundColor" red="0.2694476146" green="0.36244939929999997" blue="0.49623325889999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-do-wnb">
-                                <rect key="frame" x="59" y="9" width="243" height="23"/>
+                                <rect key="frame" x="59" y="9" width="224" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-wx-lmC">
-                                <rect key="frame" x="59" y="26" width="243" height="32"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-wx-lmC">
+                                <rect key="frame" x="59" y="26" width="224" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.033708635776874878" green="0.29695587480925811" blue="0.50994499362244894" alpha="1" colorSpace="calibratedRGB"/>
@@ -497,8 +498,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-rg-Td3">
                                 <rect key="frame" x="0.0" y="66" width="320" height="445"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.9417594298837324" green="0.93720986742052592" blue="0.94630899234693877" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.8445925151" green="0.84051235800000001" blue="0.84867267219999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayStepCell" id="UXL-0Y-N2l" customClass="BrewDayStepCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -563,6 +564,15 @@
                                     <outlet property="delegate" destination="uuY-JX-vTb" id="grJ-1O-hOL"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="294-dp-rdY">
+                                <rect key="frame" x="286" y="22" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="QHx-f5-YOc" kind="modal" identifier="BrewDayStepsInfoSegue" modalTransitionStyle="coverVertical" id="8vq-8f-pEy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.45802523350000002" green="0.61611594130000003" blue="0.84353077170000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -574,6 +584,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="brew_info" destination="294-dp-rdY" id="X7r-pK-QF8"/>
                         <outlet property="brew_style" destination="2tD-kW-c5m" id="bHO-WF-eVP"/>
                         <outlet property="info" destination="bXH-wx-lmC" id="sZg-6i-WRv"/>
                         <outlet property="name" destination="FOz-do-wnb" id="MuG-OY-BhC"/>
@@ -593,4 +604,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="8vq-8f-pEy"/>
+    </inferredMetricsTieBreakers>
 </document>
