@@ -87,7 +87,7 @@ class BrewDayTableViewController < UITableViewController
   def tableView(tableView, cellForRowAtIndexPath:path)
     item = @brews[path.row]
     cell = tableView.dequeueReusableCellWithIdentifier(BrewDayCell.name)
-    cell.populate(item.name, item.info, item.brew_style)
+    cell.populate(item)
     cell
   end
 

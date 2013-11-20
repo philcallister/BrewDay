@@ -123,7 +123,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Add Brew Group" id="oU9-LL-mAw">
+                                    <navigationItem id="oU9-LL-mAw">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="2Tm-2i-zqQ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -150,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="name" destination="efR-2b-GzA" id="fQQ-FJ-yvC"/>
+                        <outlet property="nav_item" destination="oU9-LL-mAw" id="Jap-MW-dXq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPz-0D-bmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,7 +177,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Add Brew Step" id="6Rq-jx-ToA">
+                                    <navigationItem id="6Rq-jx-ToA">
                                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="rfA-Ls-dRN">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -535,6 +536,7 @@
                                             <outlet property="info" destination="uNS-sU-wmg" id="1f1-Em-mTD"/>
                                             <outlet property="name" destination="ju0-Yk-mHk" id="Aoy-H4-f3Z"/>
                                             <outlet property="timer" destination="Dhn-1z-BlC" id="bwG-it-fGO"/>
+                                            <segue destination="1hp-gf-8Hq" kind="modal" identifier="BrewDayStepsEditStepSegue" modalTransitionStyle="coverVertical" id="NAx-2s-ofw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayGroupCell" rowHeight="30" id="M9t-Ft-CR5" customClass="BrewDayGroupCell">
@@ -556,6 +558,7 @@
                                         <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="name" destination="OYH-c2-Cjf" id="gnQ-UE-gFv"/>
+                                            <segue destination="LAa-US-sX7" kind="modal" identifier="BrewDayStepsEditGroupSegue" id="Vp9-wf-7HK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

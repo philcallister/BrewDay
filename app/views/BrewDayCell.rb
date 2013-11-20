@@ -8,10 +8,10 @@ class BrewDayCell < UITableViewCell
   outlet :brew_style, UILabel
   outlet :brew_style_view, UIView
 
-  def populate(name, info, brew_style)
-    self.name.text = name
-    self.info.text = info
-    self.brew_style.text = brew_style.to_s
+  def populate(item)
+    self.name.text = item.name
+    self.info.text = item.info
+    self.brew_style.text = item.brew_style.to_s
 
     bgColorView = UIView.alloc.init
     bgColorView.backgroundColor = UIColor.colorWithRed(182.0/255.0, green:182.0/255.0, blue:182.0/255.0, alpha:1.0)

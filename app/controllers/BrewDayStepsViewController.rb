@@ -2,7 +2,7 @@ class BrewDayStepsViewController < UIViewController
 
   extend IB
 
-  attr_accessor :delegate, :brew
+  attr_accessor :delegate, :brew, :path
 
   # Outlets
   outlet :name, UILabel
@@ -29,9 +29,15 @@ class BrewDayStepsViewController < UIViewController
   def prepareForSegue(segue, sender:sender)
     vc = segue.destinationViewController
 
-    if segue.identifier == 'BrewDayStepsInfoSegue'
+    case segue.identifier
+    when 'BrewDayStepsInfoSeque'
       vc.delegate = self
       vc.brew_edit = self.brew
+    when 'BrewDayStepsEditGroupSegue'
+      self.path = table.indexPathForSelectedRow
+      table.deselectRowAtIndexPath(self.path, animated:true)
+      vc.delegate = self
+      vc.group_edit = @items[self.path.row]
     end
   end
 
@@ -76,19 +82,10 @@ class BrewDayStepsViewController < UIViewController
     case item
     when StepTemplate
       cell = tableView.dequeueReusableCellWithIdentifier(BrewDayStepCell.name)
-      cell.name.text = item.name
-      cell.info.text = item.info
-      cell.timer.text = "#{item.hours}:#{format('%02d', item.minutes)}"
     when GroupTemplate
       cell = tableView.dequeueReusableCellWithIdentifier(BrewDayGroupCell.name)
-      cell.name.text = item.name
     end
-
-    bgColorView = UIView.alloc.init
-    bgColorView.backgroundColor = UIColor.colorWithRed(220.0/255.0, green:220.0/255.0, blue:220.0/255.0, alpha:1.0)
-    cell.selectedBackgroundView = bgColorView
-    color = UIColor.colorWithRed(95.0/255.0, green:125.0/255.0, blue:54.0/255.0, alpha:1.0)
-    cell.name.highlightedTextColor = color
+    cell.populate(item)
 
     cell
   end
@@ -154,13 +151,15 @@ class BrewDayStepsViewController < UIViewController
     case buttonIndex
     when 0
       bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddGroupView')
+      bdv.delegate = self
+      bdv.group_edit = nil
     when 1
       bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddStepView')
+      bdv.delegate = self
     end
 
     # Add Step
     if bdv
-      bdv.delegate = self
       self.presentModalViewController(bdv, animated:true)
     end
   end
@@ -180,6 +179,13 @@ class BrewDayStepsViewController < UIViewController
     table.beginUpdates
     table.insertRowsAtIndexPaths(paths, withRowAnimation:UITableViewRowAnimationAutomatic)
     table.endUpdates
+  end
+
+  def editGroupDone(brew_group)
+    updateItems
+
+    cell = table.cellForRowAtIndexPath(self.path)
+    cell.name.text = brew_group.name
   end
 
   def addStepDone(brew_step)

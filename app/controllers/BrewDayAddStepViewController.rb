@@ -10,6 +10,9 @@ class BrewDayAddStepViewController < UIViewController
   outlet :step_type, UISegmentedControl
   outlet :timer_picker, UIPickerView
 
+  EVENT = 0
+  TIMER = 1
+
   def viewDidLoad
     super
   end
@@ -17,7 +20,7 @@ class BrewDayAddStepViewController < UIViewController
   def viewWillAppear(animated)
     super
 
-    timer_picker.hidden = (step_type.selectedSegmentIndex == 0)
+    timer_picker.hidden = (step_type.selectedSegmentIndex == EVENT)
   end
 
 
@@ -51,8 +54,8 @@ class BrewDayAddStepViewController < UIViewController
   def doneTouched(sender)
     brew_step = StepTemplate.new(name: self.name.text, 
                                  info: self.info.text,
-                                 hours: self.timer_picker.selectedRowInComponent(0),
-                                 minutes: self.timer_picker.selectedRowInComponent(1),
+                                 hours: (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0),
+                                 minutes: (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1),
                                  position: self.delegate.stepPosition)
     ctx = App.delegate.managedObjectContext
     ctx.insertObject(brew_step)
@@ -63,7 +66,7 @@ class BrewDayAddStepViewController < UIViewController
   end
 
   def stepTypeChanged(sender)
-    timer_picker.hidden = (sender.selectedSegmentIndex == 0)
+    timer_picker.hidden = (sender.selectedSegmentIndex == EVENT)
   end
 
 end

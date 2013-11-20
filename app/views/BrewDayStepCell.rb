@@ -7,6 +7,20 @@ class BrewDayStepCell < UITableViewCell
   outlet :info, UILabel
   outlet :timer, UILabel
 
+  def populate(item)
+    self.name.text = item.name
+    self.info.text = item.info
+    self.timer.text = item.is_event? ? nil : "#{item.hours}:#{format('%02d', item.minutes)}"
+
+    bgColorView = UIView.alloc.init
+    bgColorView.backgroundColor = UIColor.colorWithRed(182.0/255.0, green:182.0/255.0, blue:182.0/255.0, alpha:1.0)
+    self.selectedBackgroundView = bgColorView
+    color = UIColor.whiteColor
+    self.name.highlightedTextColor = color
+    self.info.highlightedTextColor = color
+    self.timer.highlightedTextColor = UIColor.whiteColor
+  end
+
   def willTransitionToState(state)
     super
 
