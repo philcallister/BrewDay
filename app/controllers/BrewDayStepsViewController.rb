@@ -30,7 +30,7 @@ class BrewDayStepsViewController < UIViewController
     vc = segue.destinationViewController
 
     case segue.identifier
-    when 'BrewDayStepsInfoSeque'
+    when 'BrewDayStepsInfoSegue'
       vc.delegate = self
       vc.brew_edit = self.brew
     when 'BrewDayStepsEditGroupSegue'
@@ -38,6 +38,11 @@ class BrewDayStepsViewController < UIViewController
       table.deselectRowAtIndexPath(self.path, animated:true)
       vc.delegate = self
       vc.group_edit = @items[self.path.row]
+    when 'BrewDayStepsEditStepSegue'
+      self.path = table.indexPathForSelectedRow
+      table.deselectRowAtIndexPath(self.path, animated:true)
+      vc.delegate = self
+      vc.step_edit = @items[self.path.row]
     end
   end
 
@@ -185,7 +190,7 @@ class BrewDayStepsViewController < UIViewController
     updateItems
 
     cell = table.cellForRowAtIndexPath(self.path)
-    cell.name.text = brew_group.name
+    cell.populate(brew_group)
   end
 
   def addStepDone(brew_step)
@@ -195,6 +200,13 @@ class BrewDayStepsViewController < UIViewController
     table.beginUpdates
     table.insertRowsAtIndexPaths(paths, withRowAnimation:UITableViewRowAnimationAutomatic)
     table.endUpdates
+  end
+
+  def editStepDone(brew_step)
+    updateItems
+
+    cell = table.cellForRowAtIndexPath(self.path)
+    cell.populate(brew_step)
   end
 
   def editBrewDone(brew)

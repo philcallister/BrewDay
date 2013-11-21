@@ -145,9 +145,7 @@ class BrewDayTableViewController < UITableViewController
     updateBrews
 
     cell = table.cellForRowAtIndexPath(self.path)
-    cell.name.text = brew.name
-    cell.info.text = brew.info
-    cell.brew_style.text = brew.brew_style.to_s
+    cell.populate(brew)
   end
 
 end

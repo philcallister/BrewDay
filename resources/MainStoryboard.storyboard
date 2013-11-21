@@ -233,6 +233,7 @@
                     <connections>
                         <outlet property="info" destination="Xps-wg-Qng" id="qLh-5p-Uak"/>
                         <outlet property="name" destination="zjF-5F-y4F" id="esp-xa-aD2"/>
+                        <outlet property="nav_item" destination="6Rq-jx-ToA" id="fef-nY-bGS"/>
                         <outlet property="step_type" destination="9CA-Ep-vZE" id="9zw-U8-xmb"/>
                         <outlet property="timer_picker" destination="Ow1-TD-lJk" id="hGQ-xf-TTv"/>
                     </connections>
