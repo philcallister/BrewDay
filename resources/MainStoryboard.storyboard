@@ -145,12 +145,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="y0y-0F-ieE">
+                                <rect key="frame" x="20" y="128" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35017427159999998" green="0.63500478319999998" blue="0.04778686243" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Event"/>
+                                    <segment title="Timer"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="groupTypeChanged:" destination="LAa-US-sX7" eventType="valueChanged" id="R7a-Tn-Byi"/>
+                                </connections>
+                            </segmentedControl>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="trv-jA-a3N">
+                                <rect key="frame" x="20" y="164" width="280" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="" label="Timer"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LAa-US-sX7" id="xL6-iD-fI0"/>
+                                    <outlet property="delegate" destination="LAa-US-sX7" id="eSu-RD-PmB"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.45749497389999999" green="0.61540265890000001" blue="0.84255420920000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="group_type" destination="y0y-0F-ieE" id="Uxm-N3-W4y"/>
                         <outlet property="name" destination="efR-2b-GzA" id="fQQ-FJ-yvC"/>
                         <outlet property="nav_item" destination="oU9-LL-mAw" id="Jap-MW-dXq"/>
+                        <outlet property="timer_picker" destination="trv-jA-a3N" id="na6-Hw-RCj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPz-0D-bmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,6 +236,7 @@
                                 <segments>
                                     <segment title="Event"/>
                                     <segment title="Timer"/>
+                                    <segment title="Stop Watch"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -548,17 +573,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-c2-Cjf">
-                                                    <rect key="frame" x="20" y="4" width="253" height="21"/>
+                                                    <rect key="frame" x="50" y="4" width="199" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN5-Rn-HXv">
+                                                    <rect key="frame" x="252" y="3" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-qf-wyg">
+                                                    <rect key="frame" x="20" y="4" width="22" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="tintColor" red="0.35686275360000003" green="0.62352943419999995" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <connections>
+                                                        <action selector="infoGroupPressed:" destination="uuY-JX-vTb" eventType="touchUpInside" id="Gu8-of-JzK"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="name" destination="OYH-c2-Cjf" id="gnQ-UE-gFv"/>
+                                            <outlet property="timer" destination="XN5-Rn-HXv" id="0F9-11-K9a"/>
                                             <segue destination="LAa-US-sX7" kind="modal" identifier="BrewDayStepsEditGroupSegue" id="Vp9-wf-7HK"/>
                                         </connections>
                                     </tableViewCell>
@@ -590,6 +632,7 @@
                     <connections>
                         <outlet property="brew_info" destination="294-dp-rdY" id="X7r-pK-QF8"/>
                         <outlet property="brew_style" destination="2tD-kW-c5m" id="bHO-WF-eVP"/>
+                        <outlet property="brew_style_view" destination="mHi-uO-yZA" id="iAc-nM-wPz"/>
                         <outlet property="info" destination="bXH-wx-lmC" id="sZg-6i-WRv"/>
                         <outlet property="name" destination="FOz-do-wnb" id="MuG-OY-BhC"/>
                         <outlet property="table" destination="6hJ-rg-Td3" id="lxN-c2-GUL"/>

@@ -20,6 +20,7 @@ class BrewDayCell < UITableViewCell
     self.name.highlightedTextColor = color
     self.info.highlightedTextColor = color
     self.brew_style.highlightedTextColor = UIColor.whiteColor
+    self.brew_style_view.layer.cornerRadius = 7
   end
 
   def setSelected(selected, animated:animated)

@@ -2,7 +2,7 @@ class BrewDayAddStepViewController < UIViewController
   
   extend IB
 
-  attr_accessor :delegate, :step_edit
+  attr_accessor :delegate, :step_edit, :group
 
   # Outlets
   outlet :name, UITextField
@@ -16,22 +16,30 @@ class BrewDayAddStepViewController < UIViewController
 
   def viewDidLoad
     super
-    if self.step_edit
-      self.nav_item.title = 'Edit Step'
-      self.name.text = step_edit.name
-      self.info.text = step_edit.info
-      self.step_type.selectedSegmentIndex = (step_edit.hours == 0 and step_edit.minutes == 0) ? EVENT : TIMER
-      self.timer_picker.selectRow(step_edit.hours, inComponent: 0, animated: true)
-      self.timer_picker.selectRow(step_edit.minutes, inComponent: 1, animated: true)
-    else
-      self.nav_item.title = 'Add Step'
-    end
   end
 
   def viewWillAppear(animated)
-    super
 
-    timer_picker.hidden = (step_type.selectedSegmentIndex == EVENT)
+    super
+    if self.step_edit
+      self.nav_item.title = 'Edit Step'
+      self.name.text = self.step_edit.name
+      self.info.text = self.step_edit.info
+      self.step_type.selectedSegmentIndex = (self.step_edit.hours == 0 and self.step_edit.minutes == 0) ? EVENT : TIMER
+      self.timer_picker.selectRow(self.step_edit.hours, inComponent: 0, animated: true)
+      self.timer_picker.selectRow(self.step_edit.minutes, inComponent: 1, animated: true)
+    else
+      self.nav_item.title = 'Add Step'
+    end
+
+    # For the step type, we'll need to determine if the group already has a
+    # timer set.  If it does, we won't have a step-watch item, and the timer
+    # will be based off the group timer value.
+    if group && group.is_timer?
+      step_type.removeSegmentAtIndex(2, animated:false)
+    end
+
+    self.timer_picker.hidden = (self.step_type.selectedSegmentIndex == EVENT)
   end
 
 
@@ -63,18 +71,18 @@ class BrewDayAddStepViewController < UIViewController
   end
 
   def doneTouched(sender)
-    if step_edit
+    if self.step_edit
       self.step_edit.name = self.name.text
       self.step_edit.info = self.info.text
-      self.step_edit.hours = (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0)
-      self.step_edit.minutes = (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1)
+      self.step_edit.hours = (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0)
+      self.step_edit.minutes = (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1)
       self.step_edit.save!
       self.delegate.editStepDone(self.step_edit)
     else
       brew_step = StepTemplate.new(name: self.name.text, 
                                    info: self.info.text,
-                                   hours: (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0),
-                                   minutes: (step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1),
+                                   hours: (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0),
+                                   minutes: (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1),
                                    position: self.delegate.stepPosition)
       ctx = App.delegate.managedObjectContext
       ctx.insertObject(brew_step)
@@ -86,7 +94,7 @@ class BrewDayAddStepViewController < UIViewController
   end
 
   def stepTypeChanged(sender)
-    timer_picker.hidden = (sender.selectedSegmentIndex == EVENT)
+    self.timer_picker.hidden = (sender.selectedSegmentIndex == EVENT)
   end
 
 end
