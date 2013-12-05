@@ -247,41 +247,42 @@ class BrewDayStepsViewController < UIViewController
       return nil
     end
 
-    def itemTopGroupItem(item)
-      @items[0..item.position].reverse.each_with_index do |i, idx|
-        return {:item => i, :index => idx} if i.kind_of? GroupTemplate
+    def thisGroup(item, index)
+      { :item => item, :index => index }
+    end
+
+    def topGroup(items, index)
+      items[0..index].reverse.each_with_index do |i, idx|
+        return { :item => i, :index => index - idx } if i.kind_of? GroupTemplate
       end
       return nil
     end
 
-    def itemTopGroupIndex(index)
-      @items[0..index].reverse.each_with_index do |i, idx|
-        return {:item => i, :index => idx} if i.kind_of? GroupTemplate
+    def bottomGroup(items, index)
+      items[index..-1].each_with_index do |i, idx|
+        return { :item => i, :index => index + idx } if i.kind_of? GroupTemplate
       end
       return nil
     end
 
-    def itemBottomGroupItem(item)
-      @items[item.position..-1].each_with_index do |i, idx|
-        return {:item => i, :index => idx} if i.kind_of? GroupTemplate
+    def lastStep(items, index)
+      last_step_item = nil
+      last_step_idx = 0
+      items[index..-1].each_with_index do |i, idx|
+        break if !i.kind_of? StepTemplate
+        last_step_item = i
+        last_step_index = idx
       end
-      return nil
-    end
-
-    def itemBottomGroupIndex(index)
-      @items[index..-1].each_with_index do |i, idx|
-        return {:item => i, :index => idx} if i.kind_of? GroupTemplate
-      end
-      return nil
+      return last_step_item.nil? ? nil : { :item => last_step_item, :index => index + last_step_idx }
     end
 
     def proposeMoveStep(sourceIndexPath, proposedDestinationIndexPath)
       # only allow moves within same group
       source = @items[sourceIndexPath.row]
       proposed = @items[proposedDestinationIndexPath.row]
-      top = itemTopGroupItem(source)
+      top = topGroup(@items, source.position)
       topPosition = (top.nil?) ? -1 : top[:item].position
-      bottom = itemBottomGroupItem(source)
+      bottom = bottomGroup(@items, source.position)
       bottomPosition = (bottom.nil?) ? @items.count : bottom[:item].position
       if (proposed.position <= topPosition) || (proposed.position >= bottomPosition)
         return sourceIndexPath
@@ -299,36 +300,42 @@ class BrewDayStepsViewController < UIViewController
     # end
 
     def moveGroupUp(row)
-      return if @items[row] == @items.first
-      group = @items[row]
-      last = group
-      if group.kind_of? GroupTemplate
-        # get all rows for this group
-        @items[row+1..-1].each do |item|
-          break if item.kind_of? GroupTemplate
-          last = item
-        end
-        move = @items.slice!(row..last.position) # rows to move
-        above = itemTopGroupIndex(row-1) # group above this one
-        @items.insert(above[:index], move).flatten!
+      bot_group = thisGroup(@items[row], row)
+      return if bot_group[:item] == @items.first
+      top_group = topGroup(@items, bot_group[:item].position-1)
+      if bot_group[:item].kind_of? GroupTemplate
+        # find the last step of the bottom group
+        last_step = lastStep(@items, bot_group[:item].position+1)
+        last_step = bot_group if last_step.nil?
+        # remove these 2 groups, including their steps, from the main items.
+        # Once we've removed them, we'll rotate on the bottom group
+        # to reverse their positions and then reinsert into the main items.
+        move_items = @items.slice!(top_group[:item].position..last_step[:item].position)
+        rotate_group = bottomGroup(move_items, 1) # index after top group
+        move_items.rotate!(rotate_group[:index])
+        @items.insert(top_group[:item].position, move_items).flatten!
+        # reset the table
         reorder(@items)
         self.table.reloadData
       end
     end
 
     def moveGroupDown(row)
-      group = @items[row]
-      return if @items.last || itemBottomGroupItem(group).nil? # this is last group
-      last = @items[row]
-      if group.kind_of? GroupTemplate
-        # get all rows for this group
-        @items[row+1..-1].each do |item|
-          break if item.kind_of? GroupTemplate
-          last = item
-        end
-        move = @items.slice!(row..last.position) # rows to move
-        below = itemBottomGroupIndex(last.position+1)
-        @items.insert(below[:index], move).flatten! # !!!!! WRONG !!!!!
+      top_group = thisGroup(@items[row], row)
+      bot_group = bottomGroup(@items, top_group[:item].position+1)
+      return if top_group[:item] == @items.last || bot_group.nil? # this is last group
+      if top_group[:item].kind_of? GroupTemplate
+        # find the last step of the bottom group
+        last_step = lastStep(@items, bot_group[:item].position+1)
+        last_step = bot_group if last_step.nil?
+        # remove these 2 groups, including their steps, from the main items.
+        # Once we've removed them, we'll rotate on the bottom group
+        # to reverse their positions and then reinsert into the main items.
+        move_items = @items.slice!(top_group[:item].position..last_step[:item].position)
+        rotate_group = bottomGroup(move_items, 1) # index after top group
+        move_items.rotate!(rotate_group[:index])
+        @items.insert(top_group[:item].position, move_items).flatten!
+        # reset the table
         reorder(@items)
         self.table.reloadData
       end

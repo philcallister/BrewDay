@@ -9,7 +9,7 @@ class ItemTemplate < MotionDataWrapper::Model
   end
 
   def is_timer?
-    hours != 0 or minutes != 0
+    !is_event?
   end
   
 end
