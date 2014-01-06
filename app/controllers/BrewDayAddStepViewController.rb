@@ -35,7 +35,7 @@ class BrewDayAddStepViewController < UIViewController
     # For the step type, we'll need to determine if the group already has a
     # timer set.  If it does, we won't have a step-watch item, and the timer
     # will be based off the group timer value.
-    if group && group.is_timer?
+    if group && group.is_timer?(group.hours, group.minutes)
       step_type.removeSegmentAtIndex(2, animated:false)
     end
 
@@ -83,12 +83,12 @@ class BrewDayAddStepViewController < UIViewController
                                    info: self.info.text,
                                    hours: (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0),
                                    minutes: (self.step_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1),
-                                   position: self.delegate.stepPosition)
+                                   position: self.group.steps.count)
       ctx = App.delegate.managedObjectContext
       ctx.insertObject(brew_step)
-      brew_step.brew = self.delegate.brew
+      brew_step.group = self.group
       brew_step.save!
-      self.delegate.addStepDone(brew_step)
+      self.delegate.addStepDone(brew_step, self.group)
     end
     self.dismissModalViewControllerAnimated(true)
   end

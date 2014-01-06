@@ -10,7 +10,8 @@ class MenuViewController < UIViewController
     @menu ||= [{ :menu => 'Create', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
                { :menu => 'Brew', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
                { :menu => 'Log', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
-               { :menu => 'Settings', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false }]
+               { :menu => 'Settings', :func => :display_view, :params => { :id => 'InitialNavigation'}, :deselect => false },
+               { :menu => 'Load', :func => :load_test_data, :params => { :id => 'InitialNavigation'}, :deselect => false }]
 
     #self.slidingViewController.setAnchorRightRevealAmount(280.0)
     self.slidingViewController.underLeftWidthLayout = ECFullWidth
@@ -54,6 +55,17 @@ class MenuViewController < UIViewController
   end
 
   def display_view(params)
+    newTopViewController = self.storyboard.instantiateViewControllerWithIdentifier(params[:id])
+    self.slidingViewController.anchorTopViewOffScreenTo(ECRight, animations:nil, onComplete:lambda do
+      frame = self.slidingViewController.topViewController.view.frame
+      self.slidingViewController.topViewController = newTopViewController
+      self.slidingViewController.topViewController.view.frame = frame
+      self.slidingViewController.resetTopView
+    end)
+  end
+
+  def load_test_data(params)
+    LoadTest::load
     newTopViewController = self.storyboard.instantiateViewControllerWithIdentifier(params[:id])
     self.slidingViewController.anchorTopViewOffScreenTo(ECRight, animations:nil, onComplete:lambda do
       frame = self.slidingViewController.topViewController.view.frame

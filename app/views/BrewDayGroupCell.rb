@@ -5,10 +5,11 @@ class BrewDayGroupCell < UITableViewCell
   # Outlets
   outlet :name, UILabel
   outlet :timer, UILabel
+  outlet :info, UIButton
 
   def populate(item)
     self.name.text = item.name
-    self.timer.text = item.is_event? ? nil : "#{item.hours}:#{format('%02d', item.minutes)}"
+    self.timer.text = item.is_event?(item.hours, item.minutes) ? nil : "#{item.hours}:#{format('%02d', item.minutes)}"
 
     bgColorView = UIView.alloc.init
     bgColorView.backgroundColor = UIColor.colorWithRed(182.0/255.0, green:182.0/255.0, blue:182.0/255.0, alpha:1.0)

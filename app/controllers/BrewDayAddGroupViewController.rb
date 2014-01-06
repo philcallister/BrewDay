@@ -71,7 +71,7 @@ class BrewDayAddGroupViewController < UIViewController
       brew_group = GroupTemplate.new(name: self.name.text,
                                      hours: (self.group_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(0),
                                      minutes: (self.group_type.selectedSegmentIndex == EVENT) ? 0 : self.timer_picker.selectedRowInComponent(1),
-                                     position: self.delegate.stepPosition)
+                                     position: self.delegate.groupPosition)
       ctx = App.delegate.managedObjectContext
       ctx.insertObject(brew_group)
       brew_group.brew = self.delegate.brew

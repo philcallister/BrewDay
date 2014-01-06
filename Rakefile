@@ -17,7 +17,7 @@ Motion::Project::App.setup do |app|
   #app.icons = ['Icon.png', 'Icon@2x.png']
   app.prerendered_icon = false
 
-  app.frameworks += ['QuartzCore']
+  app.frameworks += ['QuartzCore', 'CoreData']
 
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
