@@ -41,7 +41,8 @@ class BrewDayStepsViewController < UIViewController
       self.path = table.indexPathForSelectedRow
       self.table.deselectRowAtIndexPath(self.path, animated:true)
       vc.delegate = self
-      vc.step_edit = @items[self.path.section][:steps][self.path.row]
+      vc.step_edit = stepForPath(self.path)
+      vc.group = groupForPath(self.path)
     end
   end
 
@@ -77,7 +78,7 @@ class BrewDayStepsViewController < UIViewController
   end
   
   def tableView(tableView, cellForRowAtIndexPath:path)
-    item = @items[path.section][:steps][path.row]
+    item = stepForPath(path)
     cell = tableView.dequeueReusableCellWithIdentifier(BrewDayStepCell.name)
     cell.populate(item)
 
@@ -87,7 +88,7 @@ class BrewDayStepsViewController < UIViewController
   def tableView(tableView, commitEditingStyle:editing_style, forRowAtIndexPath:index_path)
     if editing_style == UITableViewCellEditingStyleDelete
       table.beginUpdates
-      steps = @items[index_path.section][:steps]
+      steps = stepsForPath(index_path)
       steps[index_path.row].destroy
       steps.delete_at(index_path.row)
       reorderSteps(steps)    
@@ -102,7 +103,7 @@ class BrewDayStepsViewController < UIViewController
 
   def tableView(tableView, moveRowAtIndexPath:from_index_path, toIndexPath:to_index_path)
     if from_index_path.row != to_index_path.row # make sure it actually moved
-      steps = @items[from_index_path.section][:steps]
+      steps = stepsForPath(from_index_path)
       step = steps[from_index_path.row]
       steps.delete_at(from_index_path.row)
       steps.insert(to_index_path.row, step)
@@ -151,6 +152,7 @@ class BrewDayStepsViewController < UIViewController
       vc = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddGroupView')
       vc.delegate = self
       vc.group_edit = @items[@selectedSection][:group]
+      vc.steps_edit = @items[@selectedSection][:steps]
       self.presentModalViewController(vc, animated:true)
     when 2 # Add Step
       bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddStepView')
@@ -225,6 +227,18 @@ class BrewDayStepsViewController < UIViewController
       @items.sort! { |a,b| a[:group].position <=> b[:group].position }
     end
 
+    def groupForPath(path)
+      @items[path.section][:group]
+    end
+
+    def stepForPath(path)
+      @items[path.section][:steps][path.row]
+    end
+
+    def stepsForPath(path)
+      @items[path.section][:steps]
+    end
+
     def reorderSteps(steps)
       steps.each_with_index do |step, i|
         step.position = i
@@ -248,56 +262,6 @@ class BrewDayStepsViewController < UIViewController
       @items.delete_at(section)
       reorderGroups(@items)    
     end
-
-    # def addGroup()
-    #   @items.reverse_each do |item|
-    #     return item if item.kind_of? GroupTemplate
-    #   end
-    #   return nil
-    # end
-
-    # def thisGroup(item, index)
-    #   { :item => item, :index => index }
-    # end
-
-    # def topGroup(items, index)
-    #   items[0..index].reverse.each_with_index do |i, idx|
-    #     return { :item => i, :index => index - idx } if i.kind_of? GroupTemplate
-    #   end
-    #   return nil
-    # end
-
-    # def bottomGroup(items, index)
-    #   items[index..-1].each_with_index do |i, idx|
-    #     return { :item => i, :index => index + idx } if i.kind_of? GroupTemplate
-    #   end
-    #   return nil
-    # end
-
-    # def lastStep(items, index)
-    #   last_step_item = nil
-    #   last_step_idx = 0
-    #   items[index..-1].each_with_index do |i, idx|
-    #     break if !i.kind_of? StepTemplate
-    #     last_step_item = i
-    #     last_step_index = idx
-    #   end
-    #   return last_step_item.nil? ? nil : { :item => last_step_item, :index => index + last_step_idx }
-    # end
-
-    # def proposeMoveStep(sourceIndexPath, proposedDestinationIndexPath)
-    #   # only allow moves within same group
-    #   source = @items[sourceIndexPath.row]
-    #   proposed = @items[proposedDestinationIndexPath.row]
-    #   top = topGroup(@items, source.position)
-    #   topPosition = (top.nil?) ? -1 : top[:item].position
-    #   bottom = bottomGroup(@items, source.position)
-    #   bottomPosition = (bottom.nil?) ? @items.count : bottom[:item].position
-    #   if (proposed.position <= topPosition) || (proposed.position >= bottomPosition)
-    #     return sourceIndexPath
-    #   end
-    #   return proposedDestinationIndexPath
-    # end
 
     def moveGroupUp(section)
       if section != 0 # not the top, so move it
