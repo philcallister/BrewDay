@@ -1,10 +1,4 @@
-class GroupTemplate < MotionDataWrapper::Model
-
-  # name
-  # minutes
-  # position
-  # brew => to one
-  # steps => to many
+module GrpLib
 
   def is_event?
     self.minutes == 0

@@ -56,9 +56,9 @@ class LoadTest
                             position: brew[:position])
       bt.save!
       brew[:groups].each do |group|
-        gt = GroupTemplate.new(name: group[:name],
-                               minutes: group[:minutes],
-                               position: group[:position])
+        gt = GrpTemplate.new(name: group[:name],
+                             minutes: group[:minutes],
+                             position: group[:position])
         ctx.insertObject(gt)
         gt.brew = bt
         gt.save!

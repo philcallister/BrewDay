@@ -5,5 +5,6 @@ class BrewTemplate < MotionDataWrapper::Model
   # brew_style
   # position
   # groups => to many
-  
+  # brews => to many
+
 end

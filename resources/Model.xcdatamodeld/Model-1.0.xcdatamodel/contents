@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="iOS 5.0">
+    <entity name="Brew" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Grp" inverseName="brew" inverseEntity="Grp" syncable="YES"/>
+        <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrewTemplate" inverseName="brews" inverseEntity="BrewTemplate" syncable="YES"/>
+    </entity>
     <entity name="BrewTemplate" syncable="YES">
         <attribute name="brew_style" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="info" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GroupTemplate" inverseName="brew" inverseEntity="GroupTemplate" syncable="YES"/>
+        <relationship name="brews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Brew" inverseName="template" inverseEntity="Brew" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GrpTemplate" inverseName="brew" inverseEntity="GrpTemplate" syncable="YES"/>
     </entity>
-    <entity name="GroupTemplate" syncable="YES">
+    <entity name="Grp" syncable="YES">
+        <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="brew" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Brew" inverseName="groups" inverseEntity="Brew" syncable="YES"/>
+        <relationship name="steps" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Step" inverseName="group" inverseEntity="Step" syncable="YES"/>
+    </entity>
+    <entity name="GrpTemplate" syncable="YES">
         <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <relationship name="brew" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrewTemplate" inverseName="groups" inverseEntity="BrewTemplate" syncable="YES"/>
         <relationship name="steps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StepTemplate" inverseName="group" inverseEntity="StepTemplate" syncable="YES"/>
+    </entity>
+    <entity name="Step" syncable="YES">
+        <attribute name="info" attributeType="String" syncable="YES"/>
+        <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="step_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grp" inverseName="steps" inverseEntity="Grp" syncable="YES"/>
     </entity>
     <entity name="StepTemplate" syncable="YES">
         <attribute name="info" attributeType="String" syncable="YES"/>
@@ -20,11 +44,14 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="position" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="step_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupTemplate" inverseName="steps" inverseEntity="GroupTemplate" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GrpTemplate" inverseName="steps" inverseEntity="GrpTemplate" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Brew" positionX="0" positionY="0" width="0" height="0"/>
         <element name="BrewTemplate" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GroupTemplate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GrpTemplate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Step" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StepTemplate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Grp" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
