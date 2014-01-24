@@ -1,4 +1,4 @@
-class BrewDayCell < UITableViewCell
+class BrewDayCell < SWTableViewCell
 
   extend IB
 
@@ -23,16 +23,19 @@ class BrewDayCell < UITableViewCell
     self.brew_style_view.layer.cornerRadius = 7
   end
 
-  def setSelected(selected, animated:animated)
-    @background ||= self.brew_style_view.backgroundColor
-    super
-    self.brew_style_view.backgroundColor = @background
-  end
+  # @@@@@ These were needed when the tableview selection was NOT
+  # handled manually...before the change to SWTableViewCell
 
-  def setHighlighted(highlighted, animated:animated)
-    @background ||= self.brew_style_view.backgroundColor
-    super
-    self.brew_style_view.backgroundColor = @background
-  end
+  # def setSelected(selected, animated:animated)
+  #   @background ||= self.brew_style_view.backgroundColor
+  #   super
+  #   self.brew_style_view.backgroundColor = @background
+  # end
+
+  # def setHighlighted(highlighted, animated:animated)
+  #   @background ||= self.brew_style_view.backgroundColor
+  #   super
+  #   self.brew_style_view.backgroundColor = @background
+  # end
 
 end
