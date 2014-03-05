@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project/template/ios'
 
 begin
+  require 'motion/project/template/ios'
+  require 'bubble-wrap/reactor'
   require 'bundler'
   Bundler.require
 rescue LoadError
@@ -21,6 +22,10 @@ Motion::Project::App.setup do |app|
 
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
+  # !!!!! TESTING
+  app.archs['iPhoneOS'] << 'arm64'
+  app.archs['iPhoneSimulator'] << 'x86_64'
+
   #app.testflight.sdk = 'vendor/TestFlightSDK2.0.0'
   #app.testflight.api_token = '9056f33ee65d4b8d11ee48af3f46bd5a_MTE1NDYxMzIwMTMtMDctMDggMDk6NDk6MzcuNTM1MDQ0'
   #app.testflight.team_token = '6534a7e693c9b00b660e39028c0c070b_MjQ1NzI2MjAxMy0wNy0wOCAwOTo1NDoxNi44Njg1NDU'
@@ -28,7 +33,7 @@ Motion::Project::App.setup do |app|
   app.pods do
     #pod 'ECSlidingViewController', podspec: '~/.cocoapods/repos/master/ECSlidingViewController/1.3.2/ECSlidingViewController.podspec'
     pod 'ECSlidingViewController', podspec: 'https://raw.github.com/CocoaPods/Specs/master/ECSlidingViewController/1.3.2/ECSlidingViewController.podspec'
-    pod 'SWTableViewCell', podspec: 'https://raw.github.com/CocoaPods/Specs/master/SWTableViewCell/0.2.2/SWTableViewCell.podspec'    
+    pod 'SWTableViewCell', podspec: 'https://raw.github.com/CocoaPods/Specs/master/SWTableViewCell/0.2.4/SWTableViewCell.podspec'    
   end
 
   app.development do

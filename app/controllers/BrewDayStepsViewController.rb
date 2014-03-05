@@ -216,7 +216,7 @@ class BrewDayStepsViewController < UIViewController
       # @@@@@ We shouldn't have to sort Core Data like this!  There must
       # @@@@@ be a better way, but I can't figure it out right now.
       @items = []
-      brew.groups.each do |group|
+      self.brew.groups.each do |group|
         steps = []
         group.steps.each do |s|
           steps << s

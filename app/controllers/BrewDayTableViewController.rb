@@ -30,11 +30,16 @@ class BrewDayTableViewController < UITableViewController
     when 'BrewDayAddSegue'
       vc.delegate = self
       vc.brew_edit = nil
-    # Brew Steps
+    # Steps
     when 'BrewDayStepsSegue'
       self.path = self.table.indexPathForSelectedRow
       vc.delegate = self
-      vc.brew = @brews[self.path.row]
+      vc.brew = @brew_templates[self.path.row]
+    # Brew
+    when 'BrewDayBrewSegue'
+      self.path = self.table.indexPathForSelectedRow
+      vc.delegate = self
+      vc.brew = @brew_templates[self.path.row].brew_create_or_get_unfinished
     end
   end
 
@@ -70,11 +75,11 @@ class BrewDayTableViewController < UITableViewController
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
-    @brews.count
+    @brew_templates.count
   end
   
   def tableView(tableView, cellForRowAtIndexPath:path)
-    item = @brews[path.row]
+    item = @brew_templates[path.row]
     cell = tableView.dequeueReusableCellWithIdentifier(BrewDayCell.name)
     cell.populate(item)
 
@@ -87,6 +92,7 @@ class BrewDayTableViewController < UITableViewController
     right_buttons = NSMutableArray.new
     #right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(198.0/255.0, green:198.0/255.0, blue:198.0/255.0, alpha:1.0), title:'Edit')
     right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(89.0/255.0, green:162.0/255.0, blue:12.0/255.0, alpha:1.0), title:'Brew')
+    right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(12.0/255.0, green:89.0/255.0, blue:162.0/255.0, alpha:1.0), title:'Log')
     right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(255.0/255.0, green:59.0/255.0, blue:48.0/255.0, alpha:1.0), title:'Delete')
     cell.rightUtilityButtons = right_buttons
     cell.delegate = self
@@ -120,7 +126,7 @@ class BrewDayTableViewController < UITableViewController
   # end
 
   def tableView(tableView, moveRowAtIndexPath:from_index_path, toIndexPath:to_index_path)
-    brews = Array.new(@brews)
+    brews = Array.new(@brew_templates)
     brew = brews[from_index_path.row]
     brews.delete_at(from_index_path.row)
     brews.insert(to_index_path.row, brew)
@@ -140,13 +146,20 @@ class BrewDayTableViewController < UITableViewController
   end
 
   def swipeableTableViewCell(cell, didTriggerRightUtilityButtonWithIndex:index)
+    path = NSIndexPath.indexPathForRow(cell.info.tag, inSection:0)
     case index
     when 0
-      puts "!!!!! Brew"
+      tableView.selectRowAtIndexPath(path, animated:true, scrollPosition:UITableViewScrollPositionNone)
+      self.performSegueWithIdentifier("BrewDayBrewSegue", sender:self)
     when 1
-      path = NSIndexPath.indexPathForRow(cell.info.tag, inSection:0)
+      puts "!!!!! LOG !!!!!"
+    when 2
       deleteBrew(path)
     end
+  end
+
+  def swipeableTableViewCellShouldHideUtilityButtonsOnSwipe(cell)
+    true
   end
 
   def swipeableTableViewCell(cell, scrollingToState:state)
@@ -172,7 +185,7 @@ class BrewDayTableViewController < UITableViewController
   # Delegate interface
 
   def brewPosition
-    @brews.count
+    @brew_templates.count
   end
 
   def addBrewDone(brew)
@@ -185,10 +198,7 @@ class BrewDayTableViewController < UITableViewController
   end
 
   def editBrewDone(brew)
-    updateBrews
-
-    cell = table.cellForRowAtIndexPath(self.path)
-    cell.populate(brew)
+    self.table.reloadData
   end
 
 
@@ -198,7 +208,7 @@ class BrewDayTableViewController < UITableViewController
   private
 
     def updateBrews
-      @brews = BrewTemplate.order(:position).all
+      @brew_templates = BrewTemplate.order(:position).all
     end
 
     def reorder(brews)
@@ -210,13 +220,13 @@ class BrewDayTableViewController < UITableViewController
     end
 
     def deleteBrew(index_path)
-      self.table.beginUpdates
-      brews = Array.new(@brews)
+      #self.table.beginUpdates
+      brews = Array.new(@brew_templates)
       brews[index_path.row].destroy
       brews.delete_at(index_path.row)
       reorder(brews)    
-      self.table.deleteRowsAtIndexPaths([index_path], withRowAnimation:UITableViewRowAnimationAutomatic)
-      self.table.endUpdates
+      #self.table.deleteRowsAtIndexPaths([index_path], withRowAnimation:UITableViewRowAnimationAutomatic)
+      #self.table.endUpdates
       self.table.reloadData
     end
 

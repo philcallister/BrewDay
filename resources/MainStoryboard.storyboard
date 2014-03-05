@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="78a-yj-Zzn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="78a-yj-Zzn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReP-Ne-eig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3015" y="-4761"/>
+            <point key="canvasLocation" x="-3015" y="-5469"/>
         </scene>
         <!--Brew Day Table View Controller - Brew Days-->
         <scene sceneID="j1E-dv-4jN">
@@ -284,8 +284,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="262" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-XD-sAy">
-                                            <rect key="frame" x="58" y="17" width="262" height="48"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-XD-sAy">
+                                            <rect key="frame" x="58" y="17" width="224" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -293,7 +293,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYN-cT-Xwk">
-                                            <rect key="frame" x="58" y="0.0" width="262" height="39"/>
+                                            <rect key="frame" x="58" y="0.0" width="224" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -326,7 +326,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="eXc-94-1qq" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" constant="13" id="5Dx-UO-931"/>
-                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="EjP-xy-aEB"/>
+                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" constant="38" id="EjP-xy-aEB"/>
                                         <constraint firstAttribute="bottom" secondItem="5i1-XD-sAy" secondAttribute="bottom" id="FkW-sI-PA8"/>
                                         <constraint firstItem="pYN-cT-Xwk" firstAttribute="top" secondItem="Jbt-SN-1Gx" secondAttribute="top" id="NoB-ky-DZ2"/>
                                         <constraint firstItem="eXc-94-1qq" firstAttribute="leading" secondItem="Jbt-SN-1Gx" secondAttribute="leading" constant="10" id="RPf-fy-iJG"/>
@@ -335,9 +335,9 @@
                                         <constraint firstItem="pYN-cT-Xwk" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="trailing" constant="10" id="lkO-Hn-SsG"/>
                                         <constraint firstItem="pYN-cT-Xwk" firstAttribute="leading" secondItem="eXc-94-1qq" secondAttribute="trailing" constant="10" id="n24-KS-IWk"/>
                                         <constraint firstAttribute="bottom" secondItem="pYN-cT-Xwk" secondAttribute="bottom" constant="26" id="os4-od-nZo"/>
-                                        <constraint firstAttribute="trailing" secondItem="pYN-cT-Xwk" secondAttribute="trailing" id="pfL-m6-VU3"/>
+                                        <constraint firstAttribute="trailing" secondItem="pYN-cT-Xwk" secondAttribute="trailing" constant="38" id="pfL-m6-VU3"/>
                                         <constraint firstAttribute="bottom" secondItem="eXc-94-1qq" secondAttribute="bottom" constant="14" id="rCb-sI-WG2"/>
-                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" id="t4k-kn-xes"/>
+                                        <constraint firstAttribute="trailing" secondItem="5i1-XD-sAy" secondAttribute="trailing" constant="38" id="t4k-kn-xes"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -378,6 +378,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="CpU-lK-oyp" id="CbD-Ne-6o2"/>
+                        <segue destination="T40-lv-2g0" kind="push" identifier="BrewDayBrewSegue" id="rAE-X5-hc7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NET-Bc-Nxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCk-8b-Fx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3489" y="-3354"/>
+            <point key="canvasLocation" x="-3015" y="-4761"/>
         </scene>
         <!--Initial Navigation Controller-->
         <scene sceneID="ShT-RB-TLC">
@@ -573,7 +574,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYH-c2-Cjf">
-                                                    <rect key="frame" x="50" y="6" width="199" height="21"/>
+                                                    <rect key="frame" x="45" y="6" width="199" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
@@ -586,8 +587,8 @@
                                                     <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-qf-wyg">
-                                                    <rect key="frame" x="20" y="6" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-qf-wyg">
+                                                    <rect key="frame" x="15" y="6" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="tintColor" red="0.35686275360000003" green="0.62352943419999995" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
@@ -610,7 +611,7 @@
                                     <outlet property="delegate" destination="uuY-JX-vTb" id="grJ-1O-hOL"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="294-dp-rdY">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="294-dp-rdY">
                                 <rect key="frame" x="286" y="22" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -642,6 +643,182 @@
             </objects>
             <point key="canvasLocation" x="-3015" y="-4066"/>
         </scene>
+        <!--Brew Day Brew View Controller - Brew-->
+        <scene sceneID="P3M-by-FaX">
+            <objects>
+                <viewController storyboardIdentifier="BrewDayBrewView" id="T40-lv-2g0" customClass="BrewDayBrewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="peY-Di-lIv"/>
+                        <viewControllerLayoutGuide type="bottom" id="aCc-B8-1uo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xTF-dE-wps">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DQf-QK-VGk">
+                                <rect key="frame" x="0.0" y="110" width="320" height="401"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.8445925151" green="0.84051235800000001" blue="0.84867267219999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayStepCell" rowHeight="50" id="EwV-fT-W3U" customClass="BrewDayStepCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EwV-fT-W3U" id="X2z-hR-Zn4">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQl-Yu-A2h">
+                                                    <rect key="frame" x="20" y="25" width="215" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1S-vR-30j">
+                                                    <rect key="frame" x="243" y="15" width="44" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snK-Zs-n2u">
+                                                    <rect key="frame" x="20" y="3" width="215" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="info" destination="gQl-Yu-A2h" id="6ui-dv-xQt"/>
+                                            <outlet property="name" destination="snK-Zs-n2u" id="sLD-xq-FOn"/>
+                                            <outlet property="timer" destination="g1S-vR-30j" id="kf7-e5-Dsg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayGroupCell" rowHeight="34" id="NFe-1n-5dc" customClass="BrewDayGroupCell">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="34"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFe-1n-5dc" id="jAI-N0-iT1">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMF-RF-FRR">
+                                                    <rect key="frame" x="45" y="6" width="199" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkx-wp-CAK">
+                                                    <rect key="frame" x="252" y="7" width="35" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.34117648010000001" green="0.69803923369999998" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YS7-nJ-eD3">
+                                                    <rect key="frame" x="15" y="6" width="22" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="tintColor" red="0.35686275360000003" green="0.62352943419999995" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <connections>
+                                                        <action selector="infoGroupPressed:" destination="uuY-JX-vTb" eventType="touchUpInside" id="XZN-Nj-2fN"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94175942989999994" green="0.93720986740000001" blue="0.94630899229999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="info" destination="YS7-nJ-eD3" id="Q6e-Va-zXp"/>
+                                            <outlet property="name" destination="dMF-RF-FRR" id="dso-fV-bVq"/>
+                                            <outlet property="timer" destination="Dkx-wp-CAK" id="jGH-FL-J8Z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="T40-lv-2g0" id="0GB-Qo-JHP"/>
+                                    <outlet property="delegate" destination="T40-lv-2g0" id="QbO-Iv-QdH"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Info" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="7Nt-dS-aag">
+                                <rect key="frame" x="59" y="26" width="224" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iub-P9-YHn">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTk-0k-Jrp">
+                                        <rect key="frame" x="286" y="11" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" red="0.41707694670000001" green="0.76032366070000001" blue="0.05959357966" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="elapsedTimePressed" destination="T40-lv-2g0" eventType="touchUpInside" id="lz1-dp-inI"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elapsed Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK3-Iy-M0w">
+                                        <rect key="frame" x="11" y="10" width="102" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.41707694670000001" green="0.76032366070000001" blue="0.05959357966" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdb-yw-aoZ">
+                                        <rect key="frame" x="114" y="10" width="92" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24910992649494815" green="0.4461495535714286" blue="0.043716381191123831" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUf-3f-BL6">
+                                <rect key="frame" x="10" y="14" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSW-zn-D2R">
+                                        <rect key="frame" x="1" y="1" width="38" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="33"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2694476146" green="0.36244939929999997" blue="0.49623325889999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Day Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWW-I3-ibb">
+                                <rect key="frame" x="59" y="9" width="224" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35017427159999998" green="0.63500478319999998" blue="0.04778686243" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Brew" id="O6U-rt-qJu"/>
+                    <connections>
+                        <outlet property="brew_style" destination="vSW-zn-D2R" id="K4J-OG-Ol6"/>
+                        <outlet property="brew_style_view" destination="gUf-3f-BL6" id="kgL-KH-rCh"/>
+                        <outlet property="elapsed_time" destination="Fdb-yw-aoZ" id="wQv-0e-EI5"/>
+                        <outlet property="elapsed_time_view" destination="iub-P9-YHn" id="UOR-nO-Ggu"/>
+                        <outlet property="info" destination="7Nt-dS-aag" id="KTn-nT-Ycc"/>
+                        <outlet property="name" destination="vWW-I3-ibb" id="8hG-oG-TcQ"/>
+                        <outlet property="table" destination="DQf-QK-VGk" id="UyW-ey-01d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9un-Qq-sj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3949" y="-3368"/>
+        </scene>
     </scenes>
     <resources>
         <image name="menu.png" width="22" height="22"/>
@@ -652,6 +829,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2k1-U1-LLd"/>
+        <segue reference="8vq-8f-pEy"/>
     </inferredMetricsTieBreakers>
 </document>
