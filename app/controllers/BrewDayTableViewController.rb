@@ -93,6 +93,7 @@ class BrewDayTableViewController < UITableViewController
     #right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(198.0/255.0, green:198.0/255.0, blue:198.0/255.0, alpha:1.0), title:'Edit')
     right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(89.0/255.0, green:162.0/255.0, blue:12.0/255.0, alpha:1.0), title:'Brew')
     right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(12.0/255.0, green:89.0/255.0, blue:162.0/255.0, alpha:1.0), title:'Log')
+    right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(253.0/255.0, green:151.0/255.0, blue:32.0/255.0, alpha:1.0), title:'Copy')
     right_buttons.sw_addUtilityButtonWithColor(UIColor.colorWithRed(255.0/255.0, green:59.0/255.0, blue:48.0/255.0, alpha:1.0), title:'Delete')
     cell.rightUtilityButtons = right_buttons
     cell.delegate = self
@@ -154,6 +155,8 @@ class BrewDayTableViewController < UITableViewController
     when 1
       puts "!!!!! LOG !!!!!"
     when 2
+      puts "!!!!! COPY !!!!!"
+    when 3
       deleteBrew(path)
     end
   end

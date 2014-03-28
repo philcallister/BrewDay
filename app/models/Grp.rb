@@ -4,6 +4,7 @@ class Grp < MotionDataWrapper::Model
   # minutes
   # position
   # note
+  # marked
   # finished
   # brew => to one
   # steps => to many

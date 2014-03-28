@@ -2,7 +2,7 @@ class BrewDayBrewViewController < UIViewController
 
   extend IB
 
-  attr_accessor :delegate, :brew
+  attr_accessor :delegate, :brew, :path
 
   @@timer = nil
   @@seconds = 0
@@ -21,14 +21,14 @@ class BrewDayBrewViewController < UIViewController
   def viewDidLoad
     super
 
-    puts "!!!!! viewDidLoad()"
+    puts "!!!!! viewDidLoad(#{self})"
 
     updateItems
     self.navigationItem.rightBarButtonItems = [self.editButtonItem]
   end
 
   def viewWillAppear(animated)
-    puts "!!!!! viewWillAppear()"
+    puts "!!!!! viewWillAppear(#{self})"
 
     BrewDayBrewViewController::attachToTimer self.elapsed_time
 
@@ -42,10 +42,23 @@ class BrewDayBrewViewController < UIViewController
   end
 
   def viewWillDisappear(animated)
-    puts "!!!!! viewWillDisappear()"
+    puts "!!!!! viewWillDisappear(#{self})"
     puts "!!!!! delegate: #{App.delegate}"
 
     super
+  end
+
+  def prepareForSegue(segue, sender:sender)
+    vc = segue.destinationViewController
+
+    case segue.identifier
+    when 'BrewDayBrewNoteSegue'
+      vc.delegate = self
+      self.path = table.indexPathForSelectedRow
+      self.table.deselectRowAtIndexPath(self.path, animated:true)
+      vc.delegate = self
+      vc.step = stepForPath(self.path)
+    end
   end
 
   
@@ -63,12 +76,8 @@ class BrewDayBrewViewController < UIViewController
   def tableView(tableView, viewForHeaderInSection:section)
     header = tableView.dequeueReusableCellWithIdentifier(BrewDayGroupCell.name)
     item = @items[section][:group]
-    header.populate(item)
     header.info.tag = section
-
-    view = UIView.alloc.initWithFrame(header.frame)
-    view.addSubview(header)
-    view  
+    header.populate(item)
   end 
   
   def tableView(tableView, heightForRowAtIndexPath:path)
@@ -116,7 +125,7 @@ class BrewDayBrewViewController < UIViewController
   def setEditing(is_editing, animated:is_animated)
 
     # !!!!! Baloney here...
-    self.brew.finished = Brew::YES
+    self.brew.finished = Bool::YES
     self.brew.save!
 
     self.table.setEditing(is_editing, animated:is_animated)
@@ -142,6 +151,44 @@ class BrewDayBrewViewController < UIViewController
     end
   end
 
+  def addPressed(sender) 
+    cell = sender.superview.superview.superview
+    item = @items[sender.tag][:group]
+    item.marked = Bool::YES
+    item.save!
+
+    UIView.animateWithDuration(0.5,
+      animations: lambda {
+        cell.markGroup(item)
+      }
+    )
+  end
+
+
+  ############################################################################
+  # Delegate interface
+
+  def noteComplete(step)
+    cell = self.table.cellForRowAtIndexPath(self.path)
+    #cell.markStep(step)
+
+    # Check to see if all steps have been completed.  If so, mark the group
+    # as having been completed too.
+    group = groupForPath(self.path)
+    group.finished = (isGroupFinished(group)) ? Bool::YES : Bool::NO
+    group.save!
+
+    # @@@@@
+    # We'll need the actual group CELL here so we can update its
+    # background color.  Hmmmm...not sure
+    self.table.reloadData
+  end
+
+  def self.elapsedSeconds(seconds)
+    puts "!!!!! elapsedSeconds() : #{@@seconds} + #{seconds}"
+    @@seconds += seconds
+  end
+
 
   ############################################################################
   # Internal
@@ -163,8 +210,21 @@ class BrewDayBrewViewController < UIViewController
       @items.sort! { |a,b| a[:group].position <=> b[:group].position }
     end
 
+    def groupForPath(path)
+      @items[path.section][:group]
+    end
+
     def stepForPath(path)
       @items[path.section][:steps][path.row]
+    end
+
+    def isGroupFinished(group)
+      group.steps.each do |s|
+        if s.finished == Bool::NO
+          return false
+        end
+      end
+      return true
     end
 
     # !!!!!
@@ -192,15 +252,6 @@ class BrewDayBrewViewController < UIViewController
       @@timer = nil
       App.delegate.timer = nil
       App.delegate.brew_controller = nil
-    end
-
-
-    ############################################################################
-    # Delegate interface
-
-    def self.elapsedSeconds(seconds)
-      puts "!!!!! elapsedSeconds() : #{@@seconds} + #{seconds}"
-      @@seconds += seconds
     end
 
 

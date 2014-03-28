@@ -6,6 +6,7 @@ class Step < MotionDataWrapper::Model
   # minutes
   # position
   # note
+  # marked
   # finished
   # group => to one
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="78a-yj-Zzn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="78a-yj-Zzn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Splash View Controller-->
@@ -520,7 +520,7 @@
                                 <rect key="frame" x="59" y="26" width="224" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.033708635776874878" green="0.29695587480925811" blue="0.50994499362244894" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.012537883068448876" green="0.14190740971589649" blue="0.25352758290816324" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-rg-Td3">
@@ -695,6 +695,7 @@
                                             <outlet property="info" destination="gQl-Yu-A2h" id="6ui-dv-xQt"/>
                                             <outlet property="name" destination="snK-Zs-n2u" id="sLD-xq-FOn"/>
                                             <outlet property="timer" destination="g1S-vR-30j" id="kf7-e5-Dsg"/>
+                                            <segue destination="pbH-g3-nGc" kind="modal" identifier="BrewDayBrewNoteSegue" modalTransitionStyle="coverVertical" id="i8s-uU-RhR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrewDayGroupCell" rowHeight="34" id="NFe-1n-5dc" customClass="BrewDayGroupCell">
@@ -724,7 +725,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="tintColor" red="0.35686275360000003" green="0.62352943419999995" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                                     <connections>
-                                                        <action selector="infoGroupPressed:" destination="uuY-JX-vTb" eventType="touchUpInside" id="XZN-Nj-2fN"/>
+                                                        <action selector="addPressed:" destination="T40-lv-2g0" eventType="touchUpInside" id="Rih-5M-dLs"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -746,7 +747,7 @@
                                 <rect key="frame" x="59" y="26" width="224" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.033708635780000003" green="0.29695587480000002" blue="0.50994499360000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.01253788307" green="0.14190740969999999" blue="0.25352758289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iub-P9-YHn">
@@ -818,6 +819,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9un-Qq-sj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3949" y="-3368"/>
+        </scene>
+        <!--Brew Day Add Note View Controller-->
+        <scene sceneID="6Fd-am-l6f">
+            <objects>
+                <viewController id="pbH-g3-nGc" customClass="BrewDayAddNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MK4-V8-vj2"/>
+                        <viewControllerLayoutGuide type="bottom" id="49k-pO-rle"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kTy-GF-Nnn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb6-6c-A8b">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.45749497389999999" green="0.61540265890000001" blue="0.84255420920000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Add Note" id="Cz5-62-uah">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="uzq-qh-HPC">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="cancelTouched:" destination="pbH-g3-nGc" id="jtl-Qx-l8j"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="erJ-KS-vzO">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="doneTouched:" destination="pbH-g3-nGc" id="Qn7-3T-l6v"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyn-DH-OmP">
+                                <rect key="frame" x="0.0" y="108" width="320" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <accessibility key="accessibilityConfiguration" hint=""/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brew Step Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5If-TM-dww">
+                                <rect key="frame" x="20" y="79" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngh-Tm-hk8">
+                                <rect key="frame" x="251" y="301" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.99215692281723022" green="0.68235296010971069" blue="0.34117648005485535" alpha="1" colorSpace="deviceRGB"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step Complete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ait-qb-mA4">
+                                <rect key="frame" x="20" y="306" width="223" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45749497389999999" green="0.61540265890000001" blue="0.84255420920000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sQN-oZ-4f9"/>
+                    <connections>
+                        <outlet property="note" destination="Xyn-DH-OmP" id="zBn-BX-qEn"/>
+                        <outlet property="step_complete" destination="Ngh-Tm-hk8" id="77C-4c-9HM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bef-0P-a7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3489" y="-3368"/>
         </scene>
     </scenes>
     <resources>

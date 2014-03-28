@@ -23,8 +23,8 @@ Motion::Project::App.setup do |app|
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
   # !!!!! TESTING
-  app.archs['iPhoneOS'] << 'arm64'
-  app.archs['iPhoneSimulator'] << 'x86_64'
+  #app.archs['iPhoneOS'] << 'arm64'
+  #app.archs['iPhoneSimulator'] << 'x86_64'
 
   #app.testflight.sdk = 'vendor/TestFlightSDK2.0.0'
   #app.testflight.api_token = '9056f33ee65d4b8d11ee48af3f46bd5a_MTE1NDYxMzIwMTMtMDctMDggMDk6NDk6MzcuNTM1MDQ0'

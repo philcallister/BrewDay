@@ -9,8 +9,12 @@ class BrewTemplate < MotionDataWrapper::Model
 
   def brew_create_or_get_unfinished
     self.brews.each do |b|
-      return b unless b.finished == Brew::YES
+      return b unless b.finished == Bool::YES
     end
+
+    # !!!!!
+    puts "!!!!! brew_create_or_get_unfinished: new brew..."
+
     return Brew.brew_builder(self)
   end
 
