@@ -3,8 +3,9 @@ $:.unshift("/Library/RubyMotion/lib")
 
 begin
   require 'motion/project/template/ios'
-  require 'bubble-wrap/reactor'
   require 'bundler'
+  require 'bubble-wrap/reactor'
+  #require 'motion-cocoapods'
   Bundler.require
 rescue LoadError
 end
@@ -55,4 +56,4 @@ end
 
 # Track and specify files and their mutual dependencies within the :motion 
 # Bundler group
-MotionBundler.setup
+#MotionBundler.setup

@@ -4,9 +4,7 @@ class BrewDayBrewViewController < UIViewController
 
   attr_accessor :delegate, :brew, :path
 
-  @@timer = nil
-  @@seconds = 0
-  @@timer_running = false
+  @@timer = BrewTimer::Timer.new
 
   # Outlets
   outlet :name, UILabel
@@ -30,7 +28,12 @@ class BrewDayBrewViewController < UIViewController
   def viewWillAppear(animated)
     puts "!!!!! viewWillAppear(#{self})"
 
-    BrewDayBrewViewController::attachToTimer self.elapsed_time
+    #@@timer.attachToTimer self.elapsed_time
+    @@timer.add(:label) do |seconds|
+      puts "!!!!! LABEL: #{seconds}"
+      formatted = Time.at(seconds).utc.strftime("%H:%M:%S")
+      self.elapsed_time.text = formatted
+    end
 
     self.name.text = self.brew.name
     self.info.text = self.brew.info
@@ -142,26 +145,75 @@ class BrewDayBrewViewController < UIViewController
   # Actions
 
   def elapsedTimePressed
-    @@timer_running = !@@timer_running
-    if @@timer_running
-      @@seconds = 0
-      BrewDayBrewViewController::startTimer self.elapsed_time
-    else
-      BrewDayBrewViewController::cancelTimer
-    end
+    @@timer.toggle
   end
 
-  def addPressed(sender) 
-    cell = sender.superview.superview.superview
-    item = @items[sender.tag][:group]
-    item.marked = Bool::YES
-    item.save!
+  # def addPressed(sender) 
+  #   cell = sender.superview.superview.superview
+  #   item = @items[sender.tag][:group]
+  #   item.marked = Bool::YES
+  #   item.save!
 
-    UIView.animateWithDuration(0.5,
-      animations: lambda {
-        cell.markGroup(item)
-      }
-    )
+  #   UIView.animateWithDuration(0.5,
+  #     animations: lambda {
+  #       cell.markGroup(item)
+  #     }
+  #   )
+  # end
+
+  def addPressed(sender)
+    @selectedSection = sender.tag
+    @selectedCell = sender.superview.superview.superview
+    sheet = UIActionSheet.alloc.initWithTitle(nil,
+                                              delegate:self,
+                                              cancelButtonTitle:"Cancel",
+                                              destructiveButtonTitle:"Delete",
+                                              otherButtonTitles:"Start", "Edit", "Add Step", "Move Up", "Move Down", nil)
+    sheet.showInView(self.view)
+  end
+
+  def actionSheet(actionSheet, didDismissWithButtonIndex:buttonIndex)
+    case buttonIndex
+    when 0 # Delete
+      #deleteGroup(@selectedSection)
+      puts "!!!!! Delete..."
+    when 1 # Start
+      item = @items[@selectedSection][:group]
+      item.marked = Bool::YES
+      item.save!
+
+      UIView.animateWithDuration(0.5,
+        animations: lambda {
+          @selectedCell.markGroup(item)
+        }
+      )
+      unless @@timer.timer_running
+        elapsedTimePressed
+      end
+      @@timer.add(nil) do |seconds|
+        puts "!!!!! GROUP TIMER: #{seconds}"
+      end
+    when 2 # Edit
+      # vc = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddGroupView')
+      # vc.delegate = self
+      # vc.group_edit = @items[@selectedSection][:group]
+      # vc.steps_edit = @items[@selectedSection][:steps]
+      # self.presentModalViewController(vc, animated:true)
+      puts "!!!!! Edit..."
+    when 3 # Add Step
+      # bdv = self.storyboard.instantiateViewControllerWithIdentifier('BrewDayAddStepView')
+      # bdv.delegate = self
+      # bdv.step_edit = nil
+      # bdv.group = @items[@selectedSection][:group]
+      # self.presentModalViewController(bdv, animated:true)
+      puts "!!!!! Add Step..."
+    when 4 # Move Up
+      # moveGroupUp(@selectedSection) unless @selectedSection.nil?
+      puts "!!!!! Move Up..."
+    when 5 # Move Down
+      # moveGroupDown(@selectedSection) unless @selectedSection.nil?
+      puts "!!!!! Move Down..."
+    end
   end
 
 
@@ -169,6 +221,12 @@ class BrewDayBrewViewController < UIViewController
   # Delegate interface
 
   def noteComplete(step)
+    if step.finished == Bool::YES
+      unless @@timer.timer_running
+        elapsedTimePressed
+      end
+    end
+      
     cell = self.table.cellForRowAtIndexPath(self.path)
     #cell.markStep(step)
 
@@ -182,11 +240,6 @@ class BrewDayBrewViewController < UIViewController
     # We'll need the actual group CELL here so we can update its
     # background color.  Hmmmm...not sure
     self.table.reloadData
-  end
-
-  def self.elapsedSeconds(seconds)
-    puts "!!!!! elapsedSeconds() : #{@@seconds} + #{seconds}"
-    @@seconds += seconds
   end
 
 
@@ -226,33 +279,5 @@ class BrewDayBrewViewController < UIViewController
       end
       return true
     end
-
-    # !!!!!
-    def self.attachToTimer(label)
-      @@label = label
-    end
-
-    # !!!!!
-    def self.startTimer(label)
-      cancelTimer
-      attachToTimer label
-      @@timer = EM.add_periodic_timer 1.0 do
-        @@seconds = @@seconds + 1
-        formatted = Time.at(@@seconds).utc.strftime("%H:%M:%S")
-        @@label.text = formatted
-        puts "!!!!! #{formatted}"
-      end
-      App.delegate.timer = @@timer
-      App.delegate.brew_controller = self
-    end
-
-    # !!!!!
-    def self.cancelTimer
-      EM.cancel_timer(@@timer) if @@timer
-      @@timer = nil
-      App.delegate.timer = nil
-      App.delegate.brew_controller = nil
-    end
-
 
 end

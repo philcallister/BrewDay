@@ -49,9 +49,11 @@ class BrewDayGroupCell < UITableViewCell
   end
 
   def markFinished
-    self.backgroundColor = UIColor.colorWithRed(117.0/255.0, green:157.0/255.0, blue:215.0/255.0, alpha:1.0)
-    self.name.color = UIColor.colorWithRed(205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha:1.0)
-    self.timer.color = UIColor.colorWithRed(205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha:1.0)
+    self.backgroundColor = UIColor.colorWithRed(152.0/255.0, green:192.0/255.0, blue:250.0/255.0, alpha:1.0)
+    self.name.color = UIColor.colorWithRed(69.0/255.0, green:92.0/255.0, blue:127.0/255.0, alpha:1.0)
+    self.timer.color = UIColor.colorWithRed(69.0/255.0, green:92.0/255.0, blue:127.0/255.0, alpha:1.0)
+    # self.name.color = UIColor.colorWithRed(205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha:1.0)
+    # self.timer.color = UIColor.colorWithRed(205.0/255.0, green:205.0/255.0, blue:205.0/255.0, alpha:1.0)
     #self.name.color = UIColor.colorWithRed(3.0/255.0, green:49.0/255.0, blue:81.0/255.0, alpha:1.0)
     #self.timer.color = UIColor.colorWithRed(3.0/255.0, green:49.0/255.0, blue:81.0/255.0, alpha:1.0)
     self.info.enabled = false

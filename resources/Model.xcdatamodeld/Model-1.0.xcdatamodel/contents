@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="iOS 5.0">
+<model userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="iOS 5.0">
     <entity name="Brew" syncable="YES">
         <attribute name="brew_style" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -55,11 +55,11 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GrpTemplate" inverseName="steps" inverseEntity="GrpTemplate" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Brew" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="BrewTemplate" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Grp" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GrpTemplate" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Step" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="StepTemplate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Brew" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="BrewTemplate" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Grp" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="GrpTemplate" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Step" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="StepTemplate" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>

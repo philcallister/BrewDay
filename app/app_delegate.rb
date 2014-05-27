@@ -2,7 +2,7 @@ class AppDelegate
 
   include MotionDataWrapper::Delegate
 
-  attr_accessor :brew_controller, :timer
+  attr_accessor :timer
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     #TestFlight.takeOff("acde9e93-d73e-44b5-86e7-18c2070ddc29")
@@ -24,9 +24,9 @@ class AppDelegate
   end
 
   def applicationDidBecomeActive(application)
-    puts "!!!!! applicationDidBecomeActive(): #{self.brew_controller}"
-    seconds = Time.now - @time if self.timer
-    self.brew_controller.elapsedSeconds(seconds) if self.brew_controller && self.timer
+    puts "!!!!! applicationDidBecomeActive(): #{self.timer}"
+    seconds = (Time.now - @time).round if self.timer
+    self.timer.elapsed(seconds) if self.timer
   end
   
   def applicationWillTerminate(application)
